@@ -1,0 +1,27 @@
+backend:
+  name: github
+  repo: 
+  branch: main
+  site_domain: 
+
+media_folder: "img/uploads"
+site_url: 
+show_preview_links: false
+
+collections:
+  - name: "artists"
+    label: "Artists"
+    folder: "_artists"
+    create: true
+    slug: "{{slug}}"
+    fields: 
+      - {label: "Artist Name", name: "name", widget: "string"}
+      - {label: "Image", name: "image", widget: "image", hint: "This is the main image used by ."}
+      - {label: "Order", name: "order", widget: "number", default: 10, value_type: "int", hint: "You can use this number to set the ideal position this artist appears. Lower is closer to the top/left. You don't have to set this if you don't care, it's sorted automatically."}
+      - label: "Gallery"
+        name: "galleryImages"
+        widget: "list"
+        summary: '{{fields.image}}'
+        fields: 
+          - {label: "Image", name: "image", widget: "image"}
+          - {label: "URL", name: "url", widget: "string"}

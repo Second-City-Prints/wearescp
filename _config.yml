@@ -1,0 +1,9 @@
+title: We Are SCP
+timezone: UTC
+url: 
+theme: 
+  
+collections:    
+  clients:
+    title: Clients
+    output: false

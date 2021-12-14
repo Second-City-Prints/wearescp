@@ -1,0 +1,415 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+  <meta name="theme-color" content="#d42727">
+
+  <title>WE ARE SCP</title>
+  <link rel="icon" 
+    type="image/png" 
+    href="./img/scpfav.png" />
+  
+  <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
+  <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+  <link type="text/css" rel="stylesheet" href="./scp.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.0/css/all.css">
+</head>
+
+<body>
+    <header>
+        <div class="logoimg"></div>
+
+        <div class="desknav">
+            <a href="#about">Contact</a>
+            <a href="#capabilities">Capabilities</a>
+            <span class="dropdown">Careers
+                <span class="dropdown-content">
+                    <a href="" target="_blank">Production & Fulfillment</a>
+                    <a href="" target="_blank">Admin & Industry</a>
+                </span>
+            </span>
+        </div>
+
+        <span id="navtrigger" class="trigger"></span>
+
+        <nav>
+            <a href="#about">Contact</a>
+            <a href="#capabilities">Capabilities</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#about">About</a>
+            <span class="dropdown">Careers
+                <span class="dropdown-content">
+                    <a href="" target="_blank">Production & Fulfillment</a>
+                    <a href="" target="_blank">Admin & Industry</a>
+                </span>
+            </span>
+        </nav>
+    </header>
+
+    <section id="splash">
+        <div class="container">
+            <div class="copy">
+                <p>Wildly individual.</p>
+                <p>Relentlessly innovative.</p>
+                <p>Your full-service creative collaborator.</p>
+            </div>
+            <img src="./img/logoshort.png" class="splashlogo">
+        </div>
+
+        <div class="background">
+            <div class="bg-images"></div>
+        </div>
+    </section>
+
+    <section id="gallery">
+        <div class="container">
+            <!--
+                <div class="artist" data-artist="livelarge">
+                    <img src="./img/ecom-livelarge.jpg" alt="Live Large">
+                </div>
+            -->
+
+            <div class="display">
+                <div class="displaytitle">
+                    <div class="displayscroll"><div class="artistname"></div></div>
+                </div>
+
+                <span id="galclose" class="trigger"></span>
+                <div class="gallery">
+                    <div class="swiper">
+                        <div class="swiper-wrapper">
+                        </div>
+                    </div>
+                </div>
+                    
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+
+                <div class="displaytitle">
+                    <div class="displayscroll"><div class="artistname"></div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="capabilities">
+        <div class="container">
+            <h2>Capabilities</h2>
+            <div class="caplist">
+                <p>Full-Service Creative</p>
+                <p>Embroidery</p>
+                <p>Web Management</p>
+                <p>Sales Analytics</p>
+                <p>Design</p>
+                <p>Order Fulfillment</p>
+                <p>Shipping</p>
+                <p>Customer Service</p>
+                <p>Production</p>
+                <p>Sourcing</p>
+                <p>Restocking</p>
+                <p>Touring Services</p>
+                <p>Printing</p>
+                <p>Web Store Design</p>
+                <p>Inventory Reports</p>
+                <p>Web Development</p>
+            </div>            
+        </div>
+    </section>
+
+    <footer id="about">
+        <div class="container">
+            <div class="footerlogo">
+                <img src="./img/logoshort.png" class="footerimg">
+                <div class="socials">
+                    <a target="_blank" href=""><i class="fab fa-instagram"></i></a>
+                    <a target="_blank" href=""><i class="fab fa-facebook"></i></a>
+                    <a target="_blank" href=""><i class="fab fa-twitter"></i></a>
+                    <a target="_blank" href=""><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+
+            <div class="footernav">
+                <div class="column">
+                    <a href="" target="_blank">FAQs</a>
+                    <a href="" target="_blank">TERMS OF USE</a>
+                    <a href="" target="_blank">PRIVACY POLICY</a>
+                    <a href="" target="_blank">CONTACT US</a>
+                </div>
+
+                <div class="column">
+                    <span>SCP Mechandising LLC</span>
+                    <span>1020 Olympic Drive</span>
+                    <span>Batavia, IL 60510</span>
+                </div>
+                
+                <div class="footercopy">
+                    SCP Merchandising LLC ©2021. All rights reserved.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        //artist info
+        var artists = {
+            livelarge: {
+                name: "Live Large",
+                mainImage: "./img/ecom-livelarge.jpg",
+                images: [
+                    {
+                        img: "./img/ecom-store-livelarge.jpg",
+                        url: "https://merch.mxmtoon.com/"
+                    },
+                    {
+                        img:"./img/ecom-livelarge.jpg"
+                    }
+                ]
+            },
+            
+            mxmtoon: {
+                name: "mxmtoon",
+                mainImage: "./img/ecom-mxm.jpg",
+                images: [
+                    {
+                        img: "./img/ecom-store-mxm.jpg",
+                        url: "https://merch.mxmtoon.com/"
+                    },
+                    {
+                        img:"./img/ecom-mxm.jpg"
+                    }
+                ]
+            },
+            
+            barefeet: {
+                name: "Bare Feet",
+                mainImage: "./img/ecom-barefeet.jpg",
+                images: [
+                    {
+                        img: "./img/ecom-store-barefeet.jpg",
+                        url: "https://merch.mxmtoon.com/"
+                    },
+                    {
+                        img:"./img/ecom-barefeet.jpg"
+                    }
+                ]
+            },
+            
+            carlyrae: {
+                name: "Carly Rae Jepsen",
+                mainImage: "./img/ecom-carlyrae.jpg",
+                images: [
+                    {
+                        img: "./img/ecom-store-carlyrae.jpg",
+                        url: "https://merch.mxmtoon.com/"
+                    },
+                    {
+                        img:"./img/ecom-carlyrae.jpg"
+                    }
+                ]
+            },
+            
+            ctf: {
+                name: "Cross Tower Fitness",
+                mainImage: "./img/ecom-ctf.jpg",
+                images: [
+                    {
+                        img: "./img/ecom-store-ctf.jpg",
+                        url: "https://merch.mxmtoon.com/"
+                    },
+                    {
+                        img:"./img/ecom-ctf.jpg"
+                    }
+                ]
+            },
+            
+            curesma: {
+                name: "Cure SMA",
+                mainImage: "./img/ecom-curesma.jpg",
+                images: [
+                    {
+                        img: "./img/ecom-store-curesma.jpg",
+                        url: "https://merch.mxmtoon.com/"
+                    },
+                    {
+                        img:"./img/ecom-curesma.jpg"
+                    }
+                ]
+            },
+            
+            emirichu: {
+                name: "emirichu",
+                mainImage: "./img/ecom-emirichu.jpg",
+                images: [
+                    {
+                        img: "./img/ecom-store-emirichu.jpg",
+                        url: "https://merch.mxmtoon.com/"
+                    },
+                    {
+                        img:"./img/ecom-emirichu.jpg"
+                    }
+                ]
+            },
+            
+            grayscale: {
+                name: "grayscale",
+                mainImage: "./img/ecom-grayscale.jpg",
+                images: [
+                    {
+                        img: "./img/ecom-store-grayscale.png",
+                        url: "https://merch.mxmtoon.com/"
+                    },
+                    {
+                        img:"./img/ecom-grayscale.jpg"
+                    }
+                ]
+            },
+            
+            lomavista: {
+                name: "Loma Vista",
+                mainImage: "./img/ecom-lomavista.jpg",
+                images: [
+                    {
+                        img: "./img/ecom-store-lomavista.png",
+                        url: "https://merch.mxmtoon.com/"
+                    },
+                    {
+                        img:"./img/ecom-lomavista.jpg"
+                    }
+                ]
+            },
+        }
+
+        ///////// GALLERY FUNCTIONS
+        var swiper
+        function initGallery(artistName = "livelarge") {
+            //get the artist
+            let artist = artists[artistName]
+
+            //get and clear out the gallery
+            let gallery = document.querySelector('.gallery')
+            gallery.innerHTML = ""
+
+            //adds the images from the artist
+            var newImages = ""
+            artist.images.forEach(image => {
+                if(image.url) 
+                    newImages += `<div class="swiper-slide"><a href="${image.url}" target="_blank"><img src="${image.img}" alt="${artist.name}"></a></div>"`
+                else 
+                    newImages += `<div class="swiper-slide"><img src="${image.img}" alt="${artist.name}"></div>"`
+            });
+
+            gallery.innerHTML = `
+                <div class="swiper">
+                    <div class="swiper-wrapper">
+                        ${newImages}
+                    </div>
+                </div>
+            `
+
+            //update the scrolling artist names
+            document.querySelectorAll('#gallery .artistname').forEach(e=>{
+                e.innerHTML = artist.name
+            })
+
+            //init slider
+            swiper = new Swiper('.swiper', {
+                loop: true,
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                slidesPerView: 1,
+                spaceBetween: 10,
+                breakpoints: {
+                    // when window width is >= 640px
+                    640: {
+                        slidesPerView: 2,
+                        spaceBetween: 40
+                    }
+                }
+            })
+        }
+        function destroyGallery() {swiper.destroy()}
+        function toggleGallery() {document.querySelector('body').classList.toggle('gal-active')}
+        //////////
+
+        //gallery and splash image initialization
+        var splashImages = ""
+        var galleryImages = ""
+        
+        for (const artistName in artists) {
+            const artist = artists[artistName];
+            splashImages += `<div><img src="${artist.mainImage}" alt="${artist.name}" data-artist="${artistName}"></div>`
+            galleryImages += `
+                <div class="artist" data-artist="${artistName}">
+                    <img src="${artist.mainImage}" alt="${artist.name}">
+                </div>
+            `
+        }
+        
+        document.querySelector('#splash .bg-images').insertAdjacentHTML("beforeend", splashImages)
+        document.querySelector('#gallery .container').insertAdjacentHTML("afterbegin", galleryImages)
+
+        //if scrolled past the black splash page, invert the header
+        window.addEventListener("scroll", function() {
+            document.body.classList.remove('nav-active')
+            var splash = document.getElementById("splash")
+            if (window.scrollY > (splash.offsetTop + splash.offsetHeight - 50)) {
+                document.querySelector('header').classList.add('scrolled')
+            } else {
+                document.querySelector('header').classList.remove('scrolled')
+            }
+        })
+
+        //nav toggle
+        document.querySelectorAll('#navtrigger, nav a').forEach(e=>{
+            e.addEventListener('click', function(){
+                document.querySelector('body').classList.toggle('nav-active')
+            })
+        })
+
+        //nav links sliding in/out
+        document.querySelectorAll('nav > *').forEach((e, i)=>{
+            e.style.transitionDelay = `calc(${i} * 0.05s)`
+        })
+
+        //bg image duplication for seamless animation
+        document.querySelectorAll('.bg-images').forEach(e=>{
+            e.after(e.cloneNode(true))
+        })
+
+        //splash image hover pauses the animation, click scrolls you down to gallery and shows that artist's gallery
+        document.querySelectorAll('#splash .bg-images img').forEach(e=>{
+            e.addEventListener('mouseenter', ()=> document.querySelector('#splash .background').style.animationPlayState = "paused")
+            e.addEventListener('mouseleave', ()=> document.querySelector('#splash .background').style.animationPlayState = "")
+        })
+
+        //gallery artist title duplication
+        document.querySelectorAll('.artistname').forEach(e=>{
+            e.innerHTML = "Live Large"
+            for (let i = 0; i < 9; i++) {
+                e.after(e.cloneNode(true))   
+            }
+        })
+
+        //gal toggles
+        //OPEN
+        document.querySelectorAll('.artist, #splash .bg-images img').forEach(e=>{
+            e.addEventListener('click', function(){
+                document.getElementById('gallery').scrollIntoView()
+                initGallery(e.dataset.artist)
+                toggleGallery()
+            })
+        })
+
+        //CLOSE
+        document.querySelectorAll('#galclose').forEach(e=>{
+            e.addEventListener('click', function(){
+                toggleGallery()
+                destroyGallery()
+            })
+        })
+    </script>
+</body>
+</html>
