@@ -1,11 +1,11 @@
 backend:
   name: github
-  repo: 
+  repo: Second-City-Prints/wearescp
   branch: main
-  site_domain: 
+  site_domain: mystifying-bassi-b743b3.netlify.app
 
 media_folder: "img/uploads"
-site_url: 
+site_url: localhost:4000
 show_preview_links: false
 
 collections:
@@ -16,7 +16,7 @@ collections:
     slug: "{{slug}}"
     fields: 
       - {label: "Artist Name", name: "name", widget: "string"}
-      - {label: "Image", name: "image", widget: "image", hint: "This is the main image used by ."}
+      - {label: "Image", name: "image", widget: "image", hint: "This is the main image used by the artist. It appears in the scrolling portion at the top, and the gallery."}
       - {label: "Order", name: "order", widget: "number", default: 10, value_type: "int", hint: "You can use this number to set the ideal position this artist appears. Lower is closer to the top/left. You don't have to set this if you don't care, it's sorted automatically."}
       - label: "Gallery"
         name: "galleryImages"
