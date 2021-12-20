@@ -19,7 +19,7 @@ title: SCP News
       <div class="md">
         {{ post.excerpt }}
       </div>
-      <center><a href="{{ post.url }}" class="readmore">Read More</a></center>
+      <center><a href="{{ post.url }}" class="cta">Read More</a></center>
     </div>
   {% endfor %}
 </div>

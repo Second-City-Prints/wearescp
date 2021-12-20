@@ -139,6 +139,10 @@ header .logoimg {
     position: relative;
 }
 
+.dropdown > a {
+    color: white;
+}
+
 .dropdown-content {
     display: none;
     flex-direction: column;
@@ -253,11 +257,11 @@ header nav > a, header nav > span {
     transform: translateX(0%);
 }
 
-header a:hover, .dropdown:hover {
+header a:hover, .dropdown:hover, .dropdown > a:hover, .dropdown:hover > a {
     color: #d42727;
 }  
 
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 1025px) {
     .desknav {
         display: none;
     }
@@ -789,13 +793,18 @@ h1 span, h2 span {
     display: block;
 }
 
-.readmore {
+.cta {
     display: inline-block;
     padding: 10px;
     background: #d42727;
     text-transform: uppercase;
     font-weight: 600;
     color: black;
+}
+
+.cta:hover {
+    color: #d42727;    
+    background: black;
 }
 
 .post {
@@ -870,7 +879,9 @@ div.postbanner, span.postbanner {
 }
 
 .md h1, .md h2, .md h3, .md h4, .md h5, .md h6 {
-    margin-bottom: 0.5em;
+    font-weight: 600;
+    margin-bottom: 1em;
+    text-transform: uppercase;
 }
 
 .md * ~ h2, .md * ~ h3, .md * ~ h4, .md * ~ h5, .md * ~ h6 {
@@ -878,7 +889,10 @@ div.postbanner, span.postbanner {
 }
 
 .md li { margin-bottom: 0.5em; }
-.md h2 { font-size: calc(1em + 1vw); }
+.md h2 { 
+    font-size: calc(1em + 1vw); 
+    text-align: center;
+}
 .md h3 { font-size: calc(1em + 0.75vw); }
 .md h4 { font-size: calc(1em + 0.5vw); }
 .md h5 { font-size: calc(1em + 0.25vw); }
@@ -929,3 +943,41 @@ div.postbanner, span.postbanner {
     overflow-x: scroll;
     margin: auto;
 }
+
+/* contact page */
+.contact {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.contact .md {
+    padding: 20px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.contact .md center {
+    margin-top: auto;
+}
+
+.contact .md {
+    flex-basis: 600px;
+    flex-grow: 1;
+}
+
+/* career page */
+.careers center .cta {
+    padding: 10px;
+    margin: 10px;
+    text-transform: uppercase;
+}
+
+.careers center .cta > span {
+    text-transform: initial;
+    display: block;
+    font-size: 0.8em;
+    padding-top: 0.25em;
+    font-weight: 400;
+}
+  
