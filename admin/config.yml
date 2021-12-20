@@ -17,10 +17,17 @@ collections:
     editor:
       preview: false
     fields:
+      - name: featured_image
+        label: Featured image
+        widget: object
+        fields:
+          - {name: src, label: Image, widget: image}
+          - {name: alt, label: Alt text, widget: string}
+          - {name: sizing, label: sizing, widget: select,  options: [ "auto", "cover", "contain"], default: "auto", hint: "This determines how the image is sized. Cover will expand and crop the image to fit as needed, contain will ensure the whole image will fit in the banner space but may lead to black bars on the sides to offset the empty space, and finally auto will just have it be 100% the width of the banner space, with the height just being whatever it takes up when it's scaled to fit the width. You can usually just go with auto."}
       - { label: 'Layout', name: 'layout', widget: 'hidden', default: 'post' }
       - { label: 'Title', name: 'title', widget: 'string' }
       - { label: 'Publish Date', name: 'date', widget: 'datetime' }
-      - { label: 'Body', name: 'body', widget: 'markdown' }
+      - { label: 'Body', name: 'body', widget: 'markdown' }      
 
   - name: "artists"
     label: "Artists"

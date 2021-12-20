@@ -2,7 +2,7 @@
 featured_image:
   src: /img/screenprint.jpg
   alt: Screen printing
-  sizing: auto
+  sizing: cover
 layout: post
 title: Test Blog Post
 date: 2021-12-20T17:07:23.746Z

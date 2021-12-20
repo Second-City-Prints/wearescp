@@ -759,16 +759,10 @@ section.content {
     flex-direction: column;
 }
 
-/* BLOG AND POSTS */
-.content h1 {
+h1.title {
+    background: #da2926;
+    color: black;
     text-align: center;
-}
-
-.post > h2 {
-    text-transform: uppercase;
-    font-weight: 600;
-    font-size: 2em;
-    margin-bottom: 0.5em;
 }
 
 h1 span, h2 span {
@@ -778,6 +772,22 @@ h1 span, h2 span {
     font-style: italic;
 }
 
+/* BLOG AND POSTS */
+.blog {
+    max-width: 850px;
+}
+
+.post > h2 {
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 2em;
+    margin-bottom: 0.5em;
+}
+
+.previewbanner {
+    margin-bottom: 1em;
+    display: block;
+}
 
 .readmore {
     display: inline-block;
@@ -821,9 +831,18 @@ h1 span, h2 span {
     content: "← ";
 }  
 
-h1.title {
-    background: #da2926;
-    color: black;
+div.postbanner, span.postbanner {
+    display: block;
+    width: 100%;
+    height: 40vh;
+    background-position: center;
+    color: transparent !important;
+}
+
+@media only screen and (min-width: 800px) {
+    .postbody div.postbanner, .postbody span.postbanner {
+        height: 60vh;
+    }
 }
 
 /* markdown typography */

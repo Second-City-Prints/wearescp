@@ -4,11 +4,17 @@
   {% include meta.html %}
 </head>
 
-<body class="inner">
+<body class="inner postbody">
     {% include header.html %}
 
     <a href="/blog" class="blogreturn">Back to Blog</a>
     <h1 class="title">{{ page.title }} <span>{{ page.date | date_to_string }}</span></h1>
+
+    {% if page.featured_image.sizing != "auto" %}
+    <div class="postbanner" style="background-image: url('{{ page.featured_image.src }}'); background-size: {{ page.featured_image.sizing }}"> {{ page.featured_image.alt }} </div>
+    {% else %}
+    <img class="postbanner" src="{{ page.featured_image.src }}" alt="{{ page.featured_image.alt }}">
+    {% endif %}
 
     <section class="content">
         <div class="md">
@@ -18,7 +24,6 @@
 
     {% include footer.html %}
 
-	<script src="/scp.js"></script>
-	<script src="/home.js"></script>
+  <script src="{{ "/scp.js" | relative_url }}"></script>
 </body>
 </html>
