@@ -1,14 +1,15 @@
 ---
 layout: inner
-title: Blog
+title: SCP News
 ---
-<h1>Latest Posts</h1>
 
-<ul>
+<div class="blog">
   {% for post in site.posts %}
-    <li>
+    <div class="post">
       <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
-      {{ post.excerpt }}
-    </li>
+      <div class="md">
+        {{ post.excerpt }}
+      </div>
+    </div>
   {% endfor %}
-</ul>
+</div>

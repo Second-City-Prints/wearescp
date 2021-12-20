@@ -1,7 +1,12 @@
 <header>
-    <div class="logoimg"></div>
+    {% if page.url == "/" %}
+        <a class="logoimg" href="/"><h1>WE ARE SCP</h1></a>
+    {% else %}
+        <a class="logoimg" href="/">WE ARE SCP</a>
+    {% endif %}
 
     <div class="desknav">
+        <a href="/blog">Blog</a>
         <a href="#about">Contact</a>
         <a href="#capabilities">Capabilities</a>
         <span class="dropdown">Careers
@@ -15,6 +20,7 @@
     <span id="navtrigger" class="trigger"></span>
 
     <nav>
+        <a href="/blog">Blog</a>
         <a href="#about">Contact</a>
         <a href="#capabilities">Capabilities</a>
         <a href="#gallery">Gallery</a>

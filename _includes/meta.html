@@ -2,7 +2,12 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
 <meta name="theme-color" content="#d42727">
 
-<title>WE ARE SCP</title>
+{% if page.url == "/" %}
+    <title>WE ARE SCP</title>
+{% elsif page.title %}
+    <title>{{ page.title }} - WE ARE SCP</title>	
+{% endif %}
+
 <link rel="icon" 
 type="image/png" 
 href="./img/scpfav.png" />
