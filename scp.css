@@ -749,7 +749,8 @@ body.inner h1 {
     font-size: calc(1.5em + 2vw);
     text-transform: uppercase;
     font-weight: 600;
-    margin-bottom: 1em;
+    text-align: center;
+    padding: calc(15px + 2vw)
 }
 
 section.content {
@@ -777,17 +778,53 @@ h1 span, h2 span {
     font-style: italic;
 }
 
+
+.readmore {
+    display: inline-block;
+    padding: 10px;
+    background: #d42727;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: black;
+}
+
+.post {
+    padding: 1vh 0 calc(1vw + 1vh);
+    border-bottom: 1px dotted #d42727;
+    border-top: 1px dotted #d42727;
+}
+
+.post ~ .post {
+    margin-top: 1vw;
+    border-top: 0;
+}
+
+.post:first-child {
+    border-top: 0;
+}
+
+.post:last-child {
+    border-bottom: 0;
+}
+
 .blogreturn {
     width: 100%;
     max-width: 850px;
     text-transform: uppercase;
-    padding: 1em 0;
-    margin-top: -1em;
+    padding: 10px calc(15px + 2vw);
+    display: block;
+    margin: auto;
+    font-weight: 600;
 }
 
 .blogreturn::before {
     content: "← ";
 }  
+
+h1.title {
+    background: #da2926;
+    color: black;
+}
 
 /* markdown typography */
 .md {

@@ -7,10 +7,10 @@
 <body class="inner">
     {% include header.html %}
 
+    <a href="/blog" class="blogreturn">Back to Blog</a>
+    <h1 class="title">{{ page.title }} <span>{{ page.date | date_to_string }}</span></h1>
+
     <section class="content">
-        <a href="/blog" class="blogreturn">Back to Blog</a>
-        
-        <h1>{{ page.title }} <span>{{ page.date | date_to_string }}</span></h1>
         <div class="md">
           {{ content }}
         </div>
