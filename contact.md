@@ -6,13 +6,13 @@ title: Contact
 <div class="contact">
   <div class="md">
     <h2>Business Inquiries</h2>
-    <p>We’re SCP and we LOVE you. Nothing would bring us more joy than the opportunity to collaborate on a super-creative, immersive merchandise experience for you — but before we get to work we’d like to buy you dinner first (figuratively speaking, at least). So we can get to know you and your needs a little better, please fill out the form below so we can begin the process of making creative sorcery together.</p>
-    <center><a href="" class="cta" target="_blank">GET IN TOUCH</a></center>
+    <p>{{ site.data.contact.business }}</p>
+    <center><a href="{{ site.data.contact.businessbuttonurl }}" class="cta" target="_blank">{{ site.data.contact.businessbutton }}</a></center>
   </div>
 
   <div class="md">
     <h2>Customer Service</h2>
-    <p>Oh snap! SCP stands for Servicing Customers Promptly (among other things) and luckily our amazing crew is on hand to help you out. Let’s get you sorted — please take a moment to fill out the form below and we’ll be in touch stat.</p>
-    <center><a href="" class="cta" target="_blank">HOW CAN WE HELP?</a></center>
+    <p>{{ site.data.contact.customer }}</p>
+    <center><a href="{{ site.data.contact.customerbuttonurl }}" class="cta" target="_blank">{{ site.data.contact.customerbutton }}</a></center>
   </div>
 </div>

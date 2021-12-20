@@ -45,3 +45,29 @@ collections:
         fields: 
           - {label: "Image", name: "image", widget: "image"}
           - {label: "URL", name: "url", widget: "string", required: false}
+  
+  - name: "contact"
+    label: "Side Page Content (Contact, Careers)"
+    files:
+      - label: "Contact Copy"
+        name: "contact"
+        file: "_data/contact.yml"
+        fields: 
+          - {label: "Business Inquiries", name: "business", widget: "markdown" }
+          - {label: "BI Button Text", name: "businessbutton", widget: "string"}
+          - {label: "BI Button URL", name: "businessbuttonurl", widget: "string"}
+          - {label: "Customer Service", name: "customer", widget: "markdown" }
+          - {label: "CS Button Text", name: "customerbutton", widget: "string"}          
+          - {label: "CS Button URL", name: "customerbuttonurl", widget: "string"}          
+
+      - label: "Careers Copy"
+        name: "careers"
+        file: "_data/careers.yml"
+        fields: 
+          - {label: "Careers Copy", name: "careers", widget: "markdown" }
+          - {label: "Office Jobs Button Text", name: "officebutton", widget: "string"}
+          - {label: "Office Jobs Button Subtext", name: "officebuttonsub", widget: "string"}
+          - {label: "Office Jobs Button URL", name: "officebuttonurl", widget: "string"}
+          - {label: "Warehouse Jobs Button Text", name: "warehousebutton", widget: "string"}          
+          - {label: "Warehouse Jobs Button Subtext", name: "warehousebuttonsub", widget: "string"}          
+          - {label: "Warehouse Jobs Button URL", name: "warehousebuttonurl", widget: "string"}           
