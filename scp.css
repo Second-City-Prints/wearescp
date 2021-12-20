@@ -79,6 +79,7 @@ button, input[type="submit"] {
 }
 
 body, html {
+    scroll-padding-top: 10vh;
     scroll-behavior: smooth;
 }
 
@@ -98,6 +99,9 @@ header {
     align-items: center;
     padding: 20px 2.5vw;
     position: fixed;
+    top: 0;
+    left: 0;
+    background: black;
     width: 100%;
     height: 10vh;
     z-index: 2;
@@ -121,19 +125,9 @@ header .logoimg {
 .desknav > a, .desknav > span, nav > a, nav > span {
     text-transform: uppercase;
     font-size: calc(1em + 0.5vw);
-    padding: 0.1em 1em;
+    padding: 0.25em 1em;
     color: white;
-    text-shadow: 1px 1px black, -1px -1px black, -1px 1px black, 1px -1px black;
-}
-
-@media only screen and (max-width: 1000px) {
-    .desknav {
-        display: none;
-    }
-
-    #navtrigger {
-        margin-left: auto;
-    }
+    background: black;
 }
 
 .dropdown {
@@ -158,6 +152,7 @@ header .logoimg {
 
 .dropdown-content a {
     color: white;
+    background: black;
     padding: 1vh;
 }
 
@@ -179,7 +174,7 @@ nav .dropdown-content a, nav .dropdown:hover .dropdown-content {
 }  
 
 .trigger {
-    width: 4em;
+    width: calc(2em + 1vw);
     height: 1.33em;
     margin-left: 1.33em;
     padding: 1.5em 0;
@@ -226,12 +221,12 @@ header nav {
     position: absolute;
     bottom: 0;
     right: 0;
-    width: calc(7em + 35vw);
+    width: calc(7em + 30vw);
     justify-content: flex-start;
     align-items: flex-start;
     pointer-events: none;
     opacity: 0;
-    transform: translateY(calc(100% + 30px));
+    transform: translateY(100%);
     transition: opacity 200ms ease-in-out;
 }
 
@@ -241,7 +236,9 @@ header nav {
 }
 
 header nav > a, header nav > span {
-    font-size: calc(1em + 2vw);
+    font-size: calc(1em + 1vw);
+    padding-top: calc(0.25em + 1px);
+    margin-top: -1px;
     transition: transform 400ms ease-in-out;
     transform: translateX(100%);
     width: 100%;
@@ -253,11 +250,23 @@ header nav > a, header nav > span {
 
 header a:hover, .dropdown:hover {
     color: #d42727;
-    text-shadow: 1px 1px black, -1px -1px black, -1px 1px black, 1px -1px black;
 }  
 
-.scrolled .logoimg {
-    background-image: url(./img/logofull_black.png);
+@media only screen and (max-width: 1000px) {
+    .desknav {
+        display: none;
+    }
+
+    #navtrigger {
+        margin-left: auto;
+    }
+    
+    header nav a, header nav span {
+        font-size: calc(1em + 2vw);
+    }
+    header nav {
+        width: calc(7em + 35vw);
+    }
 }
 
 section, footer {
@@ -298,7 +307,6 @@ section, footer {
     font-size: calc(1em + 1vw);
     padding-left: 7.5vw;
     max-width: 575px;
-    text-shadow: 1px 1px black, -1px -1px black, -1px 1px black, 1px -1px black;
 }
 
 .copy p ~ p {
@@ -350,9 +358,11 @@ section, footer {
     cursor: pointer;
     border: 1px transparent dashed;
     z-index: 2;
+    opacity: 0.5;
 }
 
 .bg-images img:hover {
+    opacity: 1;
     border-color: white;
 }
 
@@ -427,15 +437,10 @@ section, footer {
         flex-basis: 46%;
     }
 
-    #gallery {
-        padding-top: 15vh;
-    }
-
     .artistname {
         width: 50% !important;
     }
-}
-  
+}  
 
 .display {
     position: absolute;
@@ -514,18 +519,52 @@ section, footer {
     text-align: center;
 }
 
+.viewmore {
+    display: none;
+    padding: 10px;
+    background: black;
+    color: white;
+    text-transform: uppercase;
+    position: absolute;
+    bottom: 2.5vh; 
+    cursor: pointer;
+}
+
+/* mobile gallery toggle */
+@media only screen and (max-width: 600px) {
+    #gallery:not(.viewingmore) .container {
+        max-height: 40vh;
+        overflow: hidden;
+    }
+    
+    #gallery:not(.viewingmore) .container::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 10vh;
+        background: linear-gradient(0deg, rgba(255,255,255,1) 30%, rgba(255,255,255,0) 100%);
+    }
+
+    #gallery:not(.viewingmore) .viewmore {
+        display: inline-block;
+    }
+}  
+
 /* Capabilities */
 #capabilities {
     background: #da2926;
-    text-transform: uppercase;
 }
 
 #capabilities h2 {
     color: black;
     font-weight: 600;
     font-size: calc(1.5em + 2vw);
-    padding: 10px;
     margin-bottom: 3vh;
+    padding: 10px;
+    padding-left: 0;
+    text-transform: uppercase;
 }
 
 .caplist {
@@ -535,10 +574,27 @@ section, footer {
 
 .caplist p {
     flex-basis: 23%;
-    padding: 3vh 10px;
-    font-size: calc(1em + 0.25vw);
+    padding: 2vh 5px 2vh calc(1em + 5px);
+    font-size: calc(0.8em + 0.25vw);
     font-weight: 600;
     margin-right: auto;
+    display: inline-flex;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+}
+
+.caplist p::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 1em;
+    height: 1em;
+    filter: brightness(0);
+    background-image: url(./img/scpfav.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
 }
   
 /* Footer */
@@ -619,7 +675,7 @@ footer .container {
     }
 
     .footerlogo img {
-        max-width: 60vw;
+        max-width: 50vw;
     }
 
     footer .container {
@@ -629,7 +685,7 @@ footer .container {
     .footerlogo {
         margin: auto;
         margin-bottom: 20px;
-        text-align: center;
+        text-align: left;
     }
 
     .footerlogo .socials a {
@@ -642,12 +698,13 @@ footer .container {
 
     .footercopy {
         margin-top: 20px;
+        font-size: 0.6em;
     }
 }
 
 @media only screen and (max-width: 400px) {
     .footernav .column {
-        text-align: center;
+        text-align: left;
         font-size: 0.8em;
     }
 
@@ -656,3 +713,29 @@ footer .container {
         font-size: 2.5vw;
     }
 }
+
+/* additional mobile-specific styling */
+@media only screen and (max-width: 600px) {
+    #splash .container {
+        height: 60vh;
+        padding: 20vh 2.5vw 2.5vw;
+    }
+    
+    .copy {
+        padding-left: 0;
+    }
+    
+    #gallery {
+        min-height: unset;
+    }
+
+    .caplist p {
+        flex-basis: 33%;
+    }
+}
+
+/* INNER PAGES */
+body.inner {
+    padding-top: 10vh;
+}
+
