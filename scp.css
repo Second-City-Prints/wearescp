@@ -759,12 +759,35 @@ section.content {
 }
 
 /* BLOG AND POSTS */
+.content h1 {
+    text-align: center;
+}
+
 .post > h2 {
     text-transform: uppercase;
     font-weight: 600;
     font-size: 2em;
     margin-bottom: 0.5em;
 }
+
+h1 span, h2 span {
+    display: block;
+    font-size: 1rem;
+    margin-top: 0.5em;
+    font-style: italic;
+}
+
+.blogreturn {
+    width: 100%;
+    max-width: 850px;
+    text-transform: uppercase;
+    padding: 1em 0;
+    margin-top: -1em;
+}
+
+.blogreturn::before {
+    content: "← ";
+}  
 
 /* markdown typography */
 .md {
