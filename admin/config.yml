@@ -67,7 +67,7 @@ collections:
           - {label: "Careers Copy", name: "careers", widget: "markdown" }
           - {label: "Office Jobs Button Text", name: "officebutton", widget: "string"}
           - {label: "Office Jobs Button Subtext", name: "officebuttonsub", widget: "string"}
-          - {label: "Office Jobs Button URL", name: "officebuttonurl", widget: "string"}
+          - {label: "Office Jobs Button URL", name: "officebuttonurl", widget: "string", hint: "This URL will also be used by the dropdown for office jobs in the nav."}
           - {label: "Warehouse Jobs Button Text", name: "warehousebutton", widget: "string"}          
           - {label: "Warehouse Jobs Button Subtext", name: "warehousebuttonsub", widget: "string"}          
-          - {label: "Warehouse Jobs Button URL", name: "warehousebuttonurl", widget: "string"}           
+          - {label: "Warehouse Jobs Button URL", name: "warehousebuttonurl", widget: "string", hint: "This URL will also be used by the dropdown for warehouse jobs in the nav."}           
