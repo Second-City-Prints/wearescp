@@ -2,6 +2,7 @@ title: We Are SCP
 timezone: UTC
 url: 
 theme: 
+permalink: pretty
   
 collections:    
   artists:
