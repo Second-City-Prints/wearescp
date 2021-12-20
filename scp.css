@@ -413,6 +413,7 @@ section, footer {
 }
 
 #gallery .container {
+    min-height: 70vh;
     display: flex;
     flex-wrap: wrap;
 }

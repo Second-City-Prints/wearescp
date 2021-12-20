@@ -4,6 +4,6 @@ url:
 theme: 
   
 collections:    
-  clients:
-    title: Clients
+  artists:
+    title: Artists
     output: false

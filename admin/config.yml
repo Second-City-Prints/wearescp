@@ -21,12 +21,12 @@ collections:
       - { label: 'Title', name: 'title', widget: 'string' }
       - { label: 'Publish Date', name: 'date', widget: 'datetime' }
       - { label: 'Body', name: 'body', widget: 'markdown' }
-      
+
   - name: "artists"
     label: "Artists"
     folder: "_artists"
     create: true
-    slug: "{{slug}}"
+    slug: "{{name}}"
     fields: 
       - {label: "Artist Name", name: "name", widget: "string"}
       - {label: "Image", name: "image", widget: "image", hint: "This is the main image used by the artist. It appears in the scrolling portion at the top, and the gallery."}
@@ -37,4 +37,4 @@ collections:
         summary: '{{fields.image}}'
         fields: 
           - {label: "Image", name: "image", widget: "image"}
-          - {label: "URL", name: "url", widget: "string"}
+          - {label: "URL", name: "url", widget: "string", required: false}

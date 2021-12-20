@@ -76,131 +76,22 @@
     <script>
         //artist info - generates via liquid
         var artists = {
-            livelarge: {
-                name: "Live Large",
-                mainImage: "./img/ecom-livelarge.jpg",
-                images: [
-                    {
-                        img: "./img/ecom-store-livelarge.jpg",
-                        url: "https://merch.mxmtoon.com/"
-                    },
-                    {
-                        img:"./img/ecom-livelarge.jpg"
-                    }
-                ]
-            },
-            
-            mxmtoon: {
-                name: "mxmtoon",
-                mainImage: "./img/ecom-mxm.jpg",
-                images: [
-                    {
-                        img: "./img/ecom-store-mxm.jpg",
-                        url: "https://merch.mxmtoon.com/"
-                    },
-                    {
-                        img:"./img/ecom-mxm.jpg"
-                    }
-                ]
-            },
-            
-            barefeet: {
-                name: "Bare Feet",
-                mainImage: "./img/ecom-barefeet.jpg",
-                images: [
-                    {
-                        img: "./img/ecom-store-barefeet.jpg",
-                        url: "https://merch.mxmtoon.com/"
-                    },
-                    {
-                        img:"./img/ecom-barefeet.jpg"
-                    }
-                ]
-            },
-            
-            carlyrae: {
-                name: "Carly Rae Jepsen",
-                mainImage: "./img/ecom-carlyrae.jpg",
-                images: [
-                    {
-                        img: "./img/ecom-store-carlyrae.jpg",
-                        url: "https://merch.mxmtoon.com/"
-                    },
-                    {
-                        img:"./img/ecom-carlyrae.jpg"
-                    }
-                ]
-            },
-            
-            ctf: {
-                name: "Cross Tower Fitness",
-                mainImage: "./img/ecom-ctf.jpg",
-                images: [
-                    {
-                        img: "./img/ecom-store-ctf.jpg",
-                        url: "https://merch.mxmtoon.com/"
-                    },
-                    {
-                        img:"./img/ecom-ctf.jpg"
-                    }
-                ]
-            },
-            
-            curesma: {
-                name: "Cure SMA",
-                mainImage: "./img/ecom-curesma.jpg",
-                images: [
-                    {
-                        img: "./img/ecom-store-curesma.jpg",
-                        url: "https://merch.mxmtoon.com/"
-                    },
-                    {
-                        img:"./img/ecom-curesma.jpg"
-                    }
-                ]
-            },
-            
-            emirichu: {
-                name: "emirichu",
-                mainImage: "./img/ecom-emirichu.jpg",
-                images: [
-                    {
-                        img: "./img/ecom-store-emirichu.jpg",
-                        url: "https://merch.mxmtoon.com/"
-                    },
-                    {
-                        img:"./img/ecom-emirichu.jpg"
-                    }
-                ]
-            },
-            
-            grayscale: {
-                name: "grayscale",
-                mainImage: "./img/ecom-grayscale.jpg",
-                images: [
-                    {
-                        img: "./img/ecom-store-grayscale.png",
-                        url: "https://merch.mxmtoon.com/"
-                    },
-                    {
-                        img:"./img/ecom-grayscale.jpg"
-                    }
-                ]
-            },
-            
-            lomavista: {
-                name: "Loma Vista",
-                mainImage: "./img/ecom-lomavista.jpg",
-                images: [
-                    {
-                        img: "./img/ecom-store-lomavista.png",
-                        url: "https://merch.mxmtoon.com/"
-                    },
-                    {
-                        img:"./img/ecom-lomavista.jpg"
-                    }
-                ]
-            },
+            {% assign artists = site.artists | sort: 'order' %}
+            {% for artist in artists %}
+                "{{artist.name}}": {
+                    name: "{{ artist.name }}",
+                    mainImage: "{{ artist.image }}",
+                    order: "{{ artist.order }}",
+                    images: [
+                        {% for image in artist.galleryImages %}
+                            {
+                                img: "{{ image.image }}",
+                                {% if image.url %}url: "{{ image.url }}"{% endif %}
+                            },
+                        {% endfor %}
+                    ]
+                }
+            {% endfor %}
         }
     </script>
 
