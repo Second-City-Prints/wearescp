@@ -14,7 +14,7 @@ function initGallery(artistName = "livelarge") {
         if(image.url) 
             newImages += `<div class="swiper-slide"><a href="${image.url}" target="_blank"><img src="${image.img}" alt="${artist.name}"></a></div>"`
         else 
-            newImages += `<div class="swiper-slide"><img src="${image.img}" alt="${artist.name}"></div>"`
+            newImages += `<div class="swiper-slide"><img src="${image.img}" alt="${artist.name}"></div>`
     });
 
     gallery.innerHTML = `
