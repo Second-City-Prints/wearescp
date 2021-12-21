@@ -1,0 +1,7 @@
+---
+name: Unus Annus
+image: /img/uploads/unusannus-bw.jpg
+order: 1
+galleryImages:
+  - image: /img/uploads/client-ecommerce-ua.jpg
+---
