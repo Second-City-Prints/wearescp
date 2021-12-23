@@ -22,7 +22,7 @@
         </div>
     </section>
 
-    <section id="gallery">
+    <section id="gallery" {% if site.artists.size < 8 %} class="viewingmore" {% endif %}>
         <div class="container">
             <div class="display">
                 <div class="displaytitle">
@@ -45,6 +45,9 @@
                 </div>
             </div>
         </div>
+        {% if site.artists.size > 8 %}
+        <span class="viewmore" onclick="javascript:document.getElementById('gallery').classList.add('viewingmore')">View More Clients</span>
+        {% endif %}
     </section>
 
     <section id="capabilities">
