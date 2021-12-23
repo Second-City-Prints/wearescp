@@ -2,15 +2,34 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
 <meta name="theme-color" content="#d42727">
 
-{% if page.url == "/" %}
-    <title>WE ARE SCP</title>
-{% elsif page.title %}
-    <title>{{ page.title }} - WE ARE SCP</title>	
-{% endif %}
-
 <link rel="icon" 
 type="image/png" 
 href="./img/scpfav.png" />
+
+{% if page.url == "/" %}
+    {% assign title = "WE ARE SCP" %}
+{% elsif page.title %}
+    {% assign title = page.title | append: " - WE ARE SCP" %}
+{% endif %}
+
+<!-- Primary Meta Tags -->
+<title>{{ title }}</title>
+<meta name="title" content="{{ title }}">
+<meta name="description" content="You dream it, we'll create it. WE ARE SCP.">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://wearescp.com/">
+<meta property="og:title" content="{{ title }}">
+<meta property="og:description" content="You dream it, we'll create it. WE ARE SCP.">
+<meta property="og:image" content="https://wearescp.com/img/soc.jpg">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://wearescp.com/">
+<meta property="twitter:title" content="{{ title }}">
+<meta property="twitter:description" content="You dream it, we'll create it. WE ARE SCP.">
+<meta property="twitter:image" content="https://wearescp.com/img/soc.jpg">
 
 {% assign cacheBust = site.time | date:'?v=%s' %}
 <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
