@@ -5,7 +5,7 @@ backend:
   site_domain: mystifying-bassi-b743b3.netlify.app
 
 media_folder: "img/uploads"
-site_url: http://scpreview.secondcityprints.mobi
+site_url: http://wearescp.com
 show_preview_links: false
 
 collections:
