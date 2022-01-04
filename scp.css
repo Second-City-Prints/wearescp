@@ -740,7 +740,7 @@ footer .container {
     }
 
     .caplist p {
-        flex-basis: 33%;
+        flex-basis: 50%;
     }
 }
 
