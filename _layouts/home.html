@@ -6,6 +6,7 @@
 
 <body>
     {% include header.html %}
+    {% assign artists = site.artists | sort: 'order' %}
 
     <section id="splash">
         <div class="container">
@@ -18,12 +19,22 @@
         </div>
 
         <div class="background">
-            <div class="bg-images"></div>
+            <div class="bg-images">
+                {% for artist in artists %}
+                <div><img src="{{ artist.image }}" alt="{{ artist.name }}" data-artist="{{ artist.name }}" loading="lazy"></div>
+                {% endfor %}
+            </div>
         </div>
     </section>
 
     <section id="gallery" {% if site.artists.size < 8 %} class="viewingmore" {% endif %}>
         <div class="container">
+            {% for artist in artists %}
+                <div class="artist" data-artist="{{ artist.name }}">
+                    <img src="{{ artist.image }}" alt="{{ artist.name }}" loading="lazy">
+                </div>
+            {% endfor %}
+
             <div class="display">
                 <div class="displaytitle">
                     <div class="displayscroll"><div class="artistname"></div></div>
@@ -79,7 +90,6 @@
     <script>
         //artist info - generates via liquid
         var artists = {
-            {% assign artists = site.artists | sort: 'order' %}
             {% for artist in artists %}
                 "{{artist.name}}": {
                     name: "{{ artist.name }}",
@@ -89,7 +99,8 @@
                         {% for image in artist.galleryImages %}
                             {
                                 img: "{{ image.image }}",
-                                {% if image.url %}url: "{{ image.url }}"{% endif %}
+                                {% if image.url %}url: "{{ image.url }}",{% endif %}
+                                {% if image.url %}alt: "{{ image.alt }}",{% endif %}
                             },
                         {% endfor %}
                     ]

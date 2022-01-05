@@ -11,10 +11,15 @@ function initGallery(artistName = "livelarge") {
     //adds the images from the artist
     var newImages = ""
     artist.images.forEach(image => {
+        var alt = image.alt
+        if(alt == "" || typeof alt == "undefined") {
+            alt = artist.name
+        }
+
         if(image.url) 
-            newImages += `<div class="swiper-slide"><a href="${image.url}" target="_blank"><img src="${image.img}" alt="${artist.name}"></a></div>"`
+            newImages += `<div class="swiper-slide"><a href="${image.url}" target="_blank"><img src="${image.img}" alt="${alt}"></a></div>"`
         else 
-            newImages += `<div class="swiper-slide"><img src="${image.img}" alt="${artist.name}"></div>`
+            newImages += `<div class="swiper-slide"><img src="${image.img}" alt="${alt}"></div>`
     });
 
     gallery.innerHTML = `
@@ -51,23 +56,6 @@ function initGallery(artistName = "livelarge") {
 function destroyGallery() {swiper.destroy()}
 function toggleGallery() {document.querySelector('body').classList.toggle('gal-active')}
 //////////
-
-//gallery and splash image initialization
-var splashImages = ""
-var galleryImages = ""
-
-for (const artistName in artists) {
-    const artist = artists[artistName];
-    splashImages += `<div><img src="${artist.mainImage}" alt="${artist.name}" data-artist="${artistName}"></div>`
-    galleryImages += `
-        <div class="artist" data-artist="${artistName}">
-            <img src="${artist.mainImage}" alt="${artist.name}">
-        </div>
-    `
-}
-
-document.querySelector('#splash .bg-images').insertAdjacentHTML("beforeend", splashImages)
-document.querySelector('#gallery .container').insertAdjacentHTML("afterbegin", galleryImages)
 
 //if scrolled past the black splash page, invert the header
 window.addEventListener("scroll", function() {
