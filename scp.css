@@ -458,10 +458,20 @@ section, footer {
     left: 0;
     width: 100%;
     height: 100%;
+    z-index: 2;
     display: none;
     justify-content: center;
     align-items: center;
+}
+
+.display-bg {
+    position: absolute;
+    z-index: -1;
     background: #ffffffd7;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
 }
 
 .gal-active .display {
@@ -515,7 +525,7 @@ section, footer {
 
 .displayscroll {
     white-space: nowrap;
-    animation: artistscroll 30s linear infinite;
+    animation: artistscroll 60s linear infinite;
 }
 
 @keyframes artistscroll {
@@ -525,7 +535,8 @@ section, footer {
 
 .artistname {
     display: inline-block;
-    width: 20%;
+    width: auto;
+    padding: 0 50px;
     text-align: center;
 }
 

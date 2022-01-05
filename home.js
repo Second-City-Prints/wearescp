@@ -97,7 +97,7 @@ document.querySelectorAll('.artist, #splash .bg-images img').forEach(e=>{
 })
 
 //CLOSE
-document.querySelectorAll('#galclose').forEach(e=>{
+document.querySelectorAll('.galclose').forEach(e=>{
     e.addEventListener('click', function(){
         toggleGallery()
         destroyGallery()
