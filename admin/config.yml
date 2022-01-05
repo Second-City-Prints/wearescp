@@ -45,7 +45,7 @@ collections:
         summary: '{{fields.image}}'
         fields: 
           - {label: "Image", name: "image", widget: "image"}
-          - {label: "URL", name: "url", widget: "string", required: false}
+          - {label: "URL that image links to", name: "url", widget: "string", required: false}
           - {label: "Alt Text", name: "alt", widget: "string", required: false}
   
   - name: "contact"
