@@ -446,10 +446,6 @@ section, footer {
     .artist {
         flex-basis: 46%;
     }
-
-    .artistname {
-        width: 50% !important;
-    }
 }  
 
 .display {
