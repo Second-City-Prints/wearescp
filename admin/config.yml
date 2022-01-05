@@ -36,7 +36,8 @@ collections:
     slug: "{{name}}"
     fields: 
       - {label: "Artist Name", name: "name", widget: "string"}
-      - {label: "Image", name: "image", widget: "image", hint: "This is the main image used by the artist. It appears in the scrolling portion at the top, and the gallery."}
+      - {label: "Main Image", name: "image", widget: "image", hint: "This is the main image used by the artist. It appears in the scrolling portion at the top, and the gallery."}
+      - {label: "Main Image Alt Text", name: "alt", widget: "string", required: false}
       - {label: "Order", name: "order", widget: "number", default: 10, value_type: "int", hint: "You can use this number to set the ideal position this artist appears. Lower is closer to the top/left. You don't have to set this if you don't care, it's sorted automatically."}
       - label: "Gallery"
         name: "galleryImages"
@@ -45,6 +46,7 @@ collections:
         fields: 
           - {label: "Image", name: "image", widget: "image"}
           - {label: "URL", name: "url", widget: "string", required: false}
+          - {label: "Alt Text", name: "alt", widget: "string", required: false}
   
   - name: "contact"
     label: "Side Page Content (Contact, Careers)"
