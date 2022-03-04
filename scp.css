@@ -261,7 +261,7 @@ header a:hover, .dropdown:hover, .dropdown > a:hover, .dropdown:hover > a {
     color: #d42727;
 }  
 
-@media only screen and (max-width: 1025px) {
+@media only screen and (max-width: 1050px) {
     .desknav {
         display: none;
     }
