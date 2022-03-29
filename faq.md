@@ -1,5 +1,5 @@
 ---
 layout: redirect
 title: FAQ
-redirect: https://secondcityprints.zendesk.com/hc/en-us
+redirect: https://wearescp.zendesk.com/hc/en-us
 ---
