@@ -80,19 +80,23 @@ const initSectionAnimation = () => {
 	if (prefersReducedMotion.matches) return
 	
 	sections.forEach((section, index) => {
-		const heading = section.querySelector('.history__header')
+        const heading = section.querySelector('.history__header')
 		const historyBlurb = section.querySelector('.history__blurb')
-		
-		/* Set animation start state */
-		gsap.set(heading, {
-			opacity: 0,
-			y: 50
-		})
+        const startingOpacity = index == 0 ? 0 : .3
 
-		gsap.set(historyBlurb, {
-			opacity: 0,
-			y: -15
-		})
+
+
+            gsap.set(heading, {
+                opacity: startingOpacity,
+                y: -15
+            })
+
+            gsap.set(historyBlurb, {
+                opacity: startingOpacity,
+                y: -15
+            })
+        
+        
 
 		/* Create the timeline */
 		const sectionTl = gsap.timeline({
@@ -107,17 +111,17 @@ const initSectionAnimation = () => {
 		})
 		
 		/* Add tweens to the timeline */
-		sectionTl.to(historyBlurb, {
+		sectionTl.to(heading, {
 			opacity: 1,
 			y: 0,
 			duration: 1
-		})
+		},)
 
-		.to(heading, {
+		.to(historyBlurb, {
 			opacity: 1,
 			y: 0,
 			duration: 1
-		}, 0.5)
+		}, .2)
 		
 		/* Create a new timeline to add an active class to the nav link for the current section */
 		const sectionTl2 = gsap.timeline({
