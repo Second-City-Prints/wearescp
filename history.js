@@ -61,8 +61,7 @@ const draggableInstance = Draggable.create(track, {
 	onDragStart: () => st.disable(),
 	onDragEnd: () => st.enable(),
 	onDrag: updatePosition,
-	onThrowUpdate: updatePosition,
-    snap: [0, 100]
+	onThrowUpdate: updatePosition
 })
 
 /* Allow navigation via keyboard */
@@ -75,3 +74,70 @@ track.addEventListener('keyup', (e) => {
 	
 	st.scroll(y)
 })
+
+const initSectionAnimation = () => {
+	/* Do nothing if user prefers reduced motion */
+	if (prefersReducedMotion.matches) return
+	
+	sections.forEach((section, index) => {
+		const heading = section.querySelector('.history__header')
+		const historyBlurb = section.querySelector('.history__blurb')
+		
+		/* Set animation start state */
+		gsap.set(heading, {
+			opacity: 0,
+			y: 50
+		})
+
+		gsap.set(historyBlurb, {
+			opacity: 0,
+			y: -15
+		})
+
+		/* Create the timeline */
+		const sectionTl = gsap.timeline({
+			scrollTrigger: {
+				trigger: section,
+				start: () => 'top center',
+				end: () => `+=${window.innerHeight}`,
+				toggleActions: 'play',
+				// toggleClass: 'is-active',
+				// markers: true,
+			}
+		})
+		
+		/* Add tweens to the timeline */
+		sectionTl.to(historyBlurb, {
+			opacity: 1,
+			y: 0,
+			duration: 1
+		})
+
+		.to(heading, {
+			opacity: 1,
+			y: 0,
+			duration: 1
+		}, 0.5)
+		
+		/* Create a new timeline to add an active class to the nav link for the current section */
+		const sectionTl2 = gsap.timeline({
+			scrollTrigger: {
+				trigger: section,
+				start: 'top 20px',
+				end: () => `bottom top`,
+				toggleActions: 'play none play reverse',
+				onToggle: ({ isActive }) => {
+					const sectionLink = navLinks[index]
+					
+					if (isActive) {
+						sectionLink.classList.add('is-active')
+					} else {
+						sectionLink.classList.remove('is-active')
+					}
+				}
+			}
+		})
+	})
+}
+
+initSectionAnimation()

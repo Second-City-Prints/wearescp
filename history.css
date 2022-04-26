@@ -120,6 +120,15 @@ nav::after {
     display: block;
 }
 
+.nav__link.is-active span {
+    transform: scale(1.4);
+    color: var(--activeColor);
+}
+
+.nav__link.is-active span::after {
+    display: none;
+}
+
 .section__heading {
 	font-size: clamp(2rem, 12vmin, 7rem);
 	line-height: 1;
