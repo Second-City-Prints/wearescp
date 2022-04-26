@@ -1,12 +1,26 @@
 const headerHeight = getComputedStyle(document.documentElement).getPropertyValue('--header-height');
 const sections = gsap.utils.toArray('section')
+const footer = document.getElementById("about");
 const track = document.querySelector('[data-draggable]')
 const navLinks = gsap.utils.toArray('[data-link]')
+
+const trackSnapPoints = navLinks.map(link => link.getBoundingClientRect().x);
+console.log(trackSnapPoints);
+
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
 
 const lastItemWidth = () => navLinks[navLinks.length - 1].offsetWidth
 
-const getUseableHeight = () => document.documentElement.offsetHeight - window.innerHeight
+const getUseableHeight = () => document.documentElement.offsetHeight - window.innerHeight - footer.clientHeight
+
+
+var body = document.body,
+    html = document.documentElement;
+
+var height = Math.max( body.scrollHeight, body.offsetHeight, 
+                       html.clientHeight, html.scrollHeight, html.offsetHeight );
+
+const scrollableEnd = height - footer.offsetHeight;
 
 const getDraggableWidth = () => {
 	return ((track.offsetWidth * 0.5) - lastItemWidth())
@@ -31,13 +45,14 @@ const tl = gsap.timeline()
 /* Create the ScrollTrigger instance */
 const st = ScrollTrigger.create({
 	animation: tl,
-	scrub: 0, // sync timeline to scroll position
+	scrub: 0,
+    end: getUseableHeight()
 })
 
 /* Create the Draggable instance */
 const draggableInstance = Draggable.create(track, {
 	type: 'x',
-	inertia: true,
+	// inertia: true,
 	bounds: {
 		minX: 0,
 		maxX: getDraggableWidth() * -1
@@ -46,7 +61,8 @@ const draggableInstance = Draggable.create(track, {
 	onDragStart: () => st.disable(),
 	onDragEnd: () => st.enable(),
 	onDrag: updatePosition,
-	onThrowUpdate: updatePosition
+	onThrowUpdate: updatePosition,
+    snap: [0, 100]
 })
 
 /* Allow navigation via keyboard */
