@@ -138,10 +138,16 @@ nav::after {
 
 .section__subheading{
     font-style: italic;
+	color: var(--activeColor);
 }
 
 .history__header {
     padding-bottom: 25px;
+	text-align: center;
+}
+
+.history__blurb {
+	padding: 0 10px;
 }
 
 .history__blurb p {
