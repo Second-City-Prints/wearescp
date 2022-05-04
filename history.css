@@ -1,3 +1,15 @@
+:root {
+	--section-accent-color-default: #da2926;
+	--section-accent-color-0: #ffd04c;
+	--section-accent-color-1: #f99d1b;
+	--section-accent-color-2: #ef4926;
+	--section-accent-color-3: #cc1c6a;
+	--section-accent-color-4: #674c9f;
+	--section-accent-color-5: #253a97;
+	--section-accent-color-6: #16649b;
+	--section-accent-color-7: #36a7de;
+}
+
 html, body {
     scroll-padding-top: 0; /*Had to reset*/
 }
@@ -31,7 +43,7 @@ section {
 	min-height: 100vh;
 	padding: 8rem 1rem max(5vh, 2rem) 1rem;
 	display: flex;
-    align-items: flex-start;
+    /* align-items: flex-start; */
 	justify-content: center;
 	/* background-color: hsl(var(--h, 0) 75% 60%); */
 }
@@ -146,6 +158,10 @@ nav::after {
 	text-align: center;
 }
 
+.history__right {
+	display: flex;
+}
+
 .history__blurb {
 	padding: 0 10px;
 }
@@ -156,6 +172,10 @@ nav::after {
 
 .history__blurb p:not(:last-child){
     padding-bottom: 12px;
+}
+
+.history__year{
+	display: none;
 }
 
 @media only screen and (min-width: 1000px) {
@@ -172,5 +192,15 @@ nav::after {
 
     .history__blurb{
         flex: 1;
+		padding: 50px;
+		border: solid var(--section-accent-color-default);
+		margin: 0 2px 0 50px;
     }
+
+	.history__year{
+		display: block;
+		writing-mode: vertical-lr;
+		font-size: 3em;
+		color: var(--section-accent-color-default);
+	}
 }

@@ -4,14 +4,11 @@ const footer = document.getElementById("about");
 const track = document.querySelector('[data-draggable]')
 const navLinks = gsap.utils.toArray('[data-link]')
 
-const trackSnapPoints = navLinks.map(link => link.getBoundingClientRect().x);
-console.log(trackSnapPoints);
-
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
 
 const lastItemWidth = () => navLinks[navLinks.length - 1].offsetWidth
 
-const getUseableHeight = () => document.documentElement.offsetHeight - window.innerHeight - footer.clientHeight
+const getUseableHeight = () => document.documentElement.offsetHeight - window.innerHeight - footer.clientHeight;
 
 
 var body = document.body,
@@ -145,3 +142,18 @@ const initSectionAnimation = () => {
 }
 
 initSectionAnimation()
+
+sections.forEach((section, i) => {
+	let computedStyles = getComputedStyle(document.documentElement);
+	let sectionAccentColor = computedStyles.getPropertyValue(`--section-accent-color-${i}`).length > 0 ? 
+		computedStyles.getPropertyValue(`--section-accent-color-${i}`) : 
+	 	computedStyles.getPropertyValue('--section-accent-color-default');
+
+	let historyBlurb = section.querySelectorAll('div.history__blurb')[0];
+	let historyYear = section.querySelectorAll('div.history__year')[0];
+
+	if (historyBlurb && historyYear){
+		historyBlurb.style.borderColor = sectionAccentColor;
+		historyYear.style.color = sectionAccentColor;
+	}
+})
