@@ -73,6 +73,7 @@ title: Order Status
     display: block;
     padding: 10px;
     background: yellow;
+    white-space: pre-wrap;
     margin: 1em 0;
 }
 
@@ -163,8 +164,9 @@ title: Order Status
             
             for (const key in data) {
                 if (Object.hasOwnProperty.call(data, key)) {
-                    const field = data[key]
-                    output.insertAdjacentHTML('beforeend', `<span><strong>${key}</strong><br>${field}</span>`)
+                    var field = data[key]
+                    if(typeof field == "object") field = JSON.stringify(field)
+                    output.insertAdjacentHTML('beforeend', `<br><span><strong>${key}</strong><br>${field}</span><br>`)
                 }
             }
             
