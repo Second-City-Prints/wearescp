@@ -1072,21 +1072,36 @@ div.postbanner, span.postbanner {
     display: none;
 }
 
-.orderdetails > div {
+.outputblock > div {
     display: flex;
     flex-direction: column;
     margin-bottom: 1em;
     align-items: flex-start;
 }
 
-.orderdetails > div > span {
+.outputblock > div > span, .outputblock > span:first-child {
     font-size: 1.25em;
     font-weight: 600;
 }
 
-.orderdetails > div:last-child {
+.outputblock > span:first-child {
+    display: inline-block;
+    margin-bottom: 1em;
+    padding-bottom: 0.25em;
+    border-bottom: 1px solid black;
+}
+
+.outputblock > div:last-child {
     margin-bottom: 0;
 }
+.shipments > .outputblock {
+    padding: 1em;
+    font-size: 0.9em;
+    line-height: 1.25em;
+    border: 1px solid black;
+    width: 100%;
+    margin: 10px 0;
+}  
 
 #guide {
     font-size: 0.9em;

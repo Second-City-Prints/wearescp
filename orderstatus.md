@@ -35,7 +35,6 @@ title: Order Status
         var form = document.querySelector('form#orderlookup')
         var data = new FormData(document.querySelector('#orderlookup'))
         var output = document.querySelector('.orderdetails')
-        var shipTo, state, tracking, items, error
 
         //reset and validation
         output.innerHTML = ""
@@ -46,59 +45,78 @@ title: Order Status
         //if the output doesn't have an error, continue with the fetch
         if(output.innerHTML == "") {
             form.classList.add('fetching') //locks out user from hitting anything in the form while active
-            fetch(`https://scporderlookup.ksws.workers.dev/?email=${encodeURIComponent(data.get('email'))}&order=${encodeURIComponent(data.get('order'))}`).then(res=>res.json().then(data=>{ //gets the JSON from the worker
-                for (const key in data) {
-                    var field = data[key]
-                    
-                    //goes through any returned data and formats it appropriately
-                    switch(key) {
-                        case 'shipto': 
-                            shipTo = `<div><span>Shipping To:</span>${field}</div>`
-                        break
-
-                        case 'state': 
-                            state = `<div><span>Shipping State: ${field.toUpperCase()}</span>`
-                            switch(field) { //if the order is unshipped, we add an extra message - if not, we just close it
-                                case 'unshipped':
-                                    state += `<em>Your order is either still being manufactured and is on pre-order, or is in our shipping program and pending shipment. Please note, all in-stock orders can have up to a 5-7 business day processing time before shipment. Preorders generally ship within 3-12 weeks after the order is placed - if there is a more specific timeline, it will be listed on the product page.<br><br>You will receive an email with your shipment tracking information after your item has been picked up from our warehouse and is on the way to you, and the tracking link will also show up here once it is processed for shipment.</em></div>`
-                                break
-                                default:
-                                    state += '</div>'
-                            }
-                        break
-
-                        case 'tracking': 
-                            tracking = `<div><a href="${field}" class="button" target="_blank">TRACKING</a></div>`
-                        break
-
-                        case 'items':
-                            items = '<div><span>Order Items</span>'
-                            field.forEach(item=>{
-                                items += `<div class='item'>x${item.quantity} ${item.name} - ${item.price}</div>`
-                            })
-                            items += '</div>'
-                        break
-
-                        case 'error':
-                            error = `<div><span>ERROR</span>${field.toUpperCase()}`
-                            if(field.includes('Order not found')) {
-                                error+= `
-                                <div class="chint">
-                                    <span>If your confirmation email includes a transaction number, try using that instead!<br>It will look like this in your order confirmation email:</span>
-                                    <img src="/img/orderstatus/chexample.png" alt="a combination of numbers and letters following the word Transaction">
-                                    <span>If you don't have one or it still doesn't work, and you've made sure there are no typos, reach out to our customer support below!</span>
-                                </div>`
-                            }
-                            error += "</div>"
-                        break
-                    }
-                }
-
-                //Adds all of the fields whether they were defined or not to the output, replacing undefined ones with empty strings
-                output.insertAdjacentHTML('beforeend', `${error || ""}${state || ""}${shipTo || ""}${tracking || ""}${items || ""}`)
+            fetch(`https://splitshipupdate.scporderlookup.ksws.workers.dev/?email=${encodeURIComponent(data.get('email'))}&order=${encodeURIComponent(data.get('order'))}`).then(res=>res.json().then(data=>{ //gets the JSON from the worker
+                output.insertAdjacentHTML('beforeend', `<div class='outputblock'>${getShipmentDisplayString(data)}</div>`)
                 form.classList.remove('fetching')           
             }))
         }
     }
     document.getElementById('orderlookup').addEventListener("submit", getOrder)
+
+    //returns an HTML block for all the given data
+    function getShipmentDisplayString(data) {
+        var shipTo, state, tracking, items, error, shipments
+        for (const key in data) {
+            var field = data[key]
+            
+            //goes through any returned data and formats it appropriately
+            switch(key) {
+                case 'shipto': 
+                    shipTo = `<div class="ordership"><span>Shipping To:</span>${field}</div>`
+                break
+
+                case 'state': 
+                    state = `<div class="orderstate"><span>Shipping State: ${field.toUpperCase()}</span>`
+                    switch(field) { //if the order is unshipped, we add an extra message - if not, we just close it
+                        case 'unshipped':
+                            state += `<em>Your order is either still being manufactured and is on pre-order, or is in our shipping program and pending shipment. Please note, all in-stock orders can have up to a 5-7 business day processing time before shipment. Preorders generally ship within 3-12 weeks after the order is placed - if there is a more specific timeline, it will be listed on the product page.<br><br>You will receive an email with your shipment tracking information after your item has been picked up from our warehouse and is on the way to you, and the tracking link will also show up here once it is processed for shipment.</em></div>`
+                        break
+
+                        case 'splitship':
+                            state += `<em>Items in your order are shipping separately.</em></div>`
+                        break
+
+                        default:
+                            state += '</div>'
+                    }
+                break
+
+                case 'tracking': 
+                    tracking = `<div class="ordertracking"><a href="${field}" class="button" target="_blank">TRACKING</a></div>`
+                break
+
+                case 'items':
+                    items = '<div class="orderitems"><span>Order Items</span>'
+                    field.forEach(item=>{
+                        items += `<div class="orderitem">x${item.quantity} ${item.name} - ${item.price}</div>`
+                    })
+                    items += '</div>'
+                break
+
+                case 'error':
+                    error = `<div class="error"><span>ERROR</span>${field.toUpperCase()}`
+                    if(field.includes('Order not found')) {
+                        error+= `
+                        <div class="chint">
+                            <span>If your confirmation email includes a transaction number, try using that instead!<br>It will look like this in your order confirmation email:</span>
+                            <img src="/img/orderstatus/chexample.png" alt="a combination of numbers and letters following the word Transaction">
+                            <span>If you don't have one or it still doesn't work, and you've made sure there are no typos, reach out to our customer support below!</span>
+                        </div>`
+                    }
+                    error += "</div>"
+                break
+
+                case 'shipments':
+                    shipments = "<div class='shipments'>"
+                    field.forEach((shipment, i)=>{
+                        shipments += `<div class='outputblock'><span>Shipment #${i}</span>${getShipmentDisplayString(shipment)}</div>`
+                    })                    
+                    shipments += "</div>"
+                break
+            }
+        }
+
+        //Adds all of the fields whether they were defined or not to the output, replacing undefined ones with empty strings
+        return `${error || ""}${state || ""}${shipTo || ""}${tracking || ""}${items || ""}${shipments || ""}`
+    }
 </script>
