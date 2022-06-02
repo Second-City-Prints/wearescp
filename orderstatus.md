@@ -74,7 +74,7 @@ title: Order Status
                         case 'items':
                             items = '<div><span>Order Items</span>'
                             field.forEach(item=>{
-                                items += `<div class='item'>x${item.quantity} ${item.name} - ${item.price.toFixed(2)}</div>`
+                                items += `<div class='item'>x${item.quantity} ${item.name} - ${item.price}</div>`
                             })
                             items += '</div>'
                         break
