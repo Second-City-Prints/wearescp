@@ -86,7 +86,7 @@ title: Order Status
                                 <div class="chint">
                                     <span>If your confirmation email includes a transaction number, try using that instead!<br>It will look like this in your order confirmation email:</span>
                                     <img src="/img/orderstatus/chexample.png" alt="a combination of numbers and letters following the word Transaction">
-                                    <span>If you don't have one or it still doesn't work, reach out to our customer support below!</span>
+                                    <span>If you don't have one or it still doesn't work, and you've made sure there are no typos, reach out to our customer support below!</span>
                                 </div>`
                             }
                             error += "</div>"
