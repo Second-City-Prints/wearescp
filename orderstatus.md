@@ -7,7 +7,7 @@ title: Order Status
     <form id="orderlookup">
         <label for="email">Email Address</label>
         <input type="text" id="email" name="email" placeholder="Email">
-        <label for="order">Transaction ID or Order #</label>
+        <label for="order">Order Number</label>
         <input type="text" id="order" name="order" placeholder="Order Number">
         <input type="submit" class="button" value="Find My Order">
     </form>
@@ -39,7 +39,7 @@ title: Order Status
         //reset and validation
         output.innerHTML = ""
         if(!data.get('email').includes('@') || (!data.get('email') && !data.get('order'))) {
-            output.insertAdjacentHTML('beforeend', `<div><span>ERROR</span>You need to enter a valid email and order number</div>`)
+            output.insertAdjacentHTML('beforeend', `<div><span>ERROR</span><br>You need to enter a valid email and order number</div>`)
         }
 
         //if the output doesn't have an error, continue with the fetch
@@ -94,7 +94,7 @@ title: Order Status
                 case 'items':
                     items = '<div class="orderitems"><span>Items being shipped</span>'
                     field.forEach(item=>{
-                        items += `<div class="orderitem">x${item.quantity} ${item.name} - ${item.price}</div>`
+                        items += `<div class="orderitem">x${item.quantity} ${item.name} <span class="price">${item.price}</span></div>`
                     })
                     items += '</div>'
                 break
@@ -106,7 +106,7 @@ title: Order Status
                         <div class="chint">
                             <span>If your confirmation email includes a transaction number, try using that instead!<br>It will look like this in your order confirmation email:</span>
                             <img src="/img/orderstatus/chexample.png" alt="a combination of numbers and letters following the word Transaction">
-                            <span>If you don't have one or it still doesn't work, and you've made sure there are no typos, reach out to our customer support below!</span>
+                            <span>If your transaction and order numbers are not working, and you've made sure that there are no typos, or if you have yet to receive either -- please reach out to our customer support below!</span>
                         </div>`
                     }
                     error += "</div>"
