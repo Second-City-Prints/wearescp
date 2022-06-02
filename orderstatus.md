@@ -109,7 +109,7 @@ title: Order Status
                 case 'shipments':
                     shipments = "<div class='shipments'>"
                     field.forEach((shipment, i)=>{
-                        shipments += `<div class='outputblock'><span>Shipment #${i}</span>${getShipmentDisplayString(shipment)}</div>`
+                        shipments += `<div class='outputblock'><span>Shipment #${i + 1}</span>${getShipmentDisplayString(shipment)}</div>`
                     })                    
                     shipments += "</div>"
                 break
