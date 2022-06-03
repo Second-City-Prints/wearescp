@@ -1186,3 +1186,12 @@ div.postbanner, span.postbanner {
         height: 3em;
     }  
 }
+
+/* fix for mobile IOS */
+@media screen and (-webkit-min-device-pixel-ratio:0) and (max-width: 900px) { 
+    select,
+    textarea,
+    input {
+        font-size: 16px;
+    }
+}
