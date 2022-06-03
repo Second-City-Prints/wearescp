@@ -1,0 +1,207 @@
+/* order status tool */
+.orderstatus {
+    max-width: 850px;
+    width: 100%;
+}
+
+.orderlookup {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    text-align: center;
+    max-width: 500px;
+    margin: auto;
+    width: 100%;
+}
+
+.orderlookup.fetching {
+    position: relative;
+}
+
+.orderlookup.fetching::after {
+    content: "We're searching for your order now, this may take a moment!";
+    margin-bottom: 1em;
+    background: #d42727;
+    padding: 1em 10px;
+    font-size: 0.8em;
+}
+
+.orderlookup.fetching::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: block;
+    width: 5vw;
+    height: 5vw;
+    z-index: 2;
+    border: 5px dashed black;
+    background-size: 120% 120%;
+    background-position: center;
+    border-radius: 100%;
+    animation: SPIN 2s linear infinite;
+}
+
+@keyframes SPIN {
+    0% { transform: translate(-50%, -50%) rotate(0deg) }
+    100% { transform: translate(-50%, -50%) rotate(360deg) }
+}
+
+.orderlookup.fetching > * {
+    opacity: 0.25;
+    pointer-events: none;
+}
+
+.orderlookup > * {
+    margin-bottom: 20px;
+}
+
+.orderlookup label {
+    margin-bottom: 5px;
+}
+
+.button, input.button {
+    padding: 10px;
+    background: black;
+    color: white;
+    display: inline-block;
+}
+
+.orderdetails {
+    border: 1px solid;
+    display: block;
+    padding: 10px;
+    background: white;
+    white-space: pre-wrap;
+    margin: 1em 0;
+    font-size: calc(0.8em + 0.2vw);
+    line-height: 1.5em;
+}
+
+.orderdetails:empty {
+    display: none;
+}
+
+.outputblock > div {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1em;
+    align-items: flex-start;
+}
+
+.outputblock > div > span, .outputblock > span:first-child {
+    font-size: 1.25em;
+    font-weight: 600;
+    color: #da2926;
+}
+
+.outputblock > span:first-child {
+    display: inline-block;
+    margin-bottom: 1em;
+    padding-bottom: 0.25em;
+    border-bottom: 1px solid black;
+}
+
+.outputblock > div:last-child {
+    margin-bottom: 0;
+}
+
+.orderitem {
+    font-size: 0.9em;
+}
+
+.shipments > .outputblock {
+    padding: 1em;
+    font-size: 0.9em;
+    line-height: 1.25em;
+    border: 1px solid black;
+    width: 100%;
+    margin: 10px 0;
+}  
+
+#guide {
+    font-size: 0.9em;
+    line-height: 1.5em;
+    max-width: 500px;
+    margin: auto;
+}
+
+#guide ol {
+    padding-left: 2em;
+}
+
+#guide em {
+    font-style: italic;
+    display: inline-block;
+    font-size: 0.9em;
+}
+
+.chint {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border: 1px solid;
+    padding: 10px;
+    width: 100%;
+    margin: 0.5em auto;
+    white-space: normal;
+    background: white;
+}
+
+.chint span {
+    font-size: 0.9em;
+    line-height: 1.1em;
+    padding-top: 10px;
+    text-align: center;
+}
+
+.chint img {
+    border: 1px dashed;
+    margin: 0.5em 0;
+}
+
+#guide .ordersupport {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 1em auto;
+}
+
+#guide .ordersupport > *:not(.button) {
+    margin: 0.5em 0;
+    text-align: center;
+}
+
+#guide .ordersupport em:last-child {
+    font-size: 0.75em;
+}
+
+.chelp {
+    text-align: center;
+    width: 100%;
+    display: block;
+    margin-top: 0.5em;
+    cursor: pointer;
+    text-decoration: underline;
+    color: #d42727;
+    font-style: italic;
+}
+
+@media only screen and (max-width: 600px) {
+    input[type="text"], .button {
+        height: 3em;
+    }  
+}
+
+/* fix for mobile IOS */
+@media screen and (-webkit-min-device-pixel-ratio:0) and (max-width: 900px) { 
+    select,
+    textarea,
+    input {
+        font-size: 16px;
+    }
+}
