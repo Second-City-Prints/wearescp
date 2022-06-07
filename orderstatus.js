@@ -112,9 +112,10 @@ function SCP__getShipmentDisplayString(data) {
                 if(field.includes('Order not found')) {
                     error+= `
                     <div class="chint">
-                        <span>If your confirmation email includes a transaction number, try using that instead!<br>It will look like this in your order confirmation email:</span>
+                        <span>First, double check for typos! If your info is correct, try the below.</span>
+                        <span>If your confirmation email includes a transaction number, try using that instead. If it's there, it will look like this:</span>
                         <img src="/img/orderstatus/chexample.png" alt="a combination of numbers and letters following the word Transaction">
-                        <span>If your transaction and order numbers are not working, and you've made sure that there are no typos, or if you have yet to receive either -- please reach out to our customer support below!</span>
+                        <span>If you don't have a transaction number, neither the transaction nor order numbers are working, or you never received any at all, reach out to customer support below.</span>
                     </div>`
                 }
                 error += "</div>"

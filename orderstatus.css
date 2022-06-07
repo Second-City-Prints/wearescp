@@ -146,6 +146,7 @@
     border: 1px solid;
     padding: 10px;
     width: 100%;
+    max-width: 600px;
     margin: 0.5em auto;
     white-space: normal;
     background: white;
