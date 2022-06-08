@@ -92,7 +92,7 @@ function SCP__getShipmentDisplayString(data) {
             break
 
             case 'service': 
-                service = `<div class="shipservice"><span>Service</span>${field}</div>`
+                service = `<div class="shipservice"><span>Requested Shipping Method</span>${field}</div>`
             break
 
             case 'tracking': 
@@ -100,7 +100,7 @@ function SCP__getShipmentDisplayString(data) {
             break
 
             case 'items':
-                items = '<div class="orderitems"><span>Items being shipped</span>'
+                items = '<div class="orderitems"><span>Items in this shipment</span>'
                 field.forEach(item=>{
                     items += `<div class="orderitem">x${item.quantity} ${item.name} <span class="price">${item.price}</span></div>`
                 })
