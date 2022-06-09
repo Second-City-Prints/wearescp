@@ -20,11 +20,13 @@ function SCP__createForm(container, options = {
     </form>
     <output class="orderdetails" id="orderoutput"></output>
     <div id="guide">
-        <p>In order to retrieve your order information, please enter...</p>
-        <ol>
-            <li>Your email address used for checkout</li>
-            <li>Your order number</li>
-        </ol>
+        <div id="orderdirections">
+            <p>In order to retrieve your order information, please enter...</p>
+            <ol>
+                <li>Your email address used for checkout</li>
+                <li>Your order number</li>
+            </ol>
+        </div>
         <div class="ordersupport">
             <em>Still have questions about your order?</em>
             <span>
@@ -54,8 +56,14 @@ function SCP__getOrder(event) {
     //if the output doesn't have an error, continue with the fetch
     if(output.innerHTML == "") {
         form.classList.add('fetching') //locks out user from hitting anything in the form while active
-        fetch(`https://splitshipupdate.scporderlookup.ksws.workers.dev/?email=${encodeURIComponent(data.get('email'))}&order=${encodeURIComponent(data.get('order'))}`).then(res=>res.json().then(data=>{ //gets the JSON from the worker
+        fetch(`https://splitshipupdate.scporderlookup.ksws.workers.dev/?email=${encodeURIComponent(data.get('email').trim())}&order=${encodeURIComponent(data.get('order').trim())}`).then(res=>res.json().then(data=>{ //gets the JSON from the worker
             output.insertAdjacentHTML('beforeend', `<div class='outputblock'>${SCP__getShipmentDisplayString(data)}</div>`)
+
+            //remove directions if successful
+            if(!data.error) {
+                document.querySelector('#orderdirections').classList.add('hide')
+            }
+
             form.classList.remove('fetching')           
         }))
     }
@@ -102,7 +110,7 @@ function SCP__getShipmentDisplayString(data) {
             case 'items':
                 items = '<div class="orderitems"><span>Items in this shipment</span>'
                 field.forEach(item=>{
-                    items += `<div class="orderitem">x${item.quantity} ${item.name} <span class="price">${item.price}</span></div>`
+                    items += `<div class="orderitem">x${item.quantity} - ${item.name} - <span class="price">${item.price}</span></div>`
                 })
                 items += '</div>'
             break
@@ -112,10 +120,15 @@ function SCP__getShipmentDisplayString(data) {
                 if(field.includes('Order not found')) {
                     error+= `
                     <div class="chint">
-                        <span>First, double check for typos! If your info is correct, try the below.</span>
-                        <span>If your confirmation email includes a transaction number, try using that instead. If it's there, it will look like this:</span>
-                        <img src="/img/orderstatus/chexample.png" alt="a combination of numbers and letters following the word Transaction">
-                        <span>If you don't have a transaction number, neither the transaction nor order numbers are working, or you never received any at all, reach out to customer support below.</span>
+                        <span>Here are a few suggestions:</span>
+                        <ul>
+                            <li>Double check for typos!</li>
+                            <li>
+                                If your confirmation email includes a transaction number, try using that instead. If it's there, <a onclick="document.querySelector('#hintimg').classList.remove('hide')">it will look like this</a>.
+                                <img src="/img/orderstatus/chexample.png" id="hintimg" class="hide" alt="a combination of numbers and letters following the word Transaction">
+                            </li>
+                            <li>If it's still not working, or you never got this info at all, reach out to customer support below.</li>
+                        </ul>
                     </div>`
                 }
                 error += "</div>"
@@ -132,5 +145,5 @@ function SCP__getShipmentDisplayString(data) {
     }
 
     //Adds all of the fields whether they were defined or not to the output, replacing undefined ones with empty strings
-    return `${error || ""}${state || ""}${service || ""}${shipTo || ""}${tracking || ""}${items || ""}${shipments || ""}`
+    return `${error || ""}${state || ""}${items || ""}${service || ""}${shipTo || ""}${tracking || ""}${shipments || ""}`
 }
