@@ -179,7 +179,8 @@ input[type="text"] {
 
 .chint img {
     border: 1px dashed;
-    margin: 0.5em 0;
+    margin: 0.5em auto;
+    display: block;
 }
 
 #guide .ordersupport {
