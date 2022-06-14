@@ -125,7 +125,7 @@ function SCP__getShipmentDisplayString(data) {
                             <li>Double check for typos!</li>
                             <li>
                                 If your confirmation email includes a transaction number, try using that instead. If it's there, <a onclick="document.querySelector('#hintimg').classList.remove('hide')">it will look like this</a>.
-                                <img src="/img/orderstatus/chexample.png" id="hintimg" class="hide" alt="a combination of numbers and letters following the word Transaction">
+                                <img src="https://wearescp.com/img/orderstatus/chexample.png" id="hintimg" class="hide" alt="a combination of numbers and letters following the word Transaction">
                             </li>
                             <li>If it's still not working, or you never got this info at all, reach out to customer support below.</li>
                         </ul>
