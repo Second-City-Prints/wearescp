@@ -6,6 +6,13 @@ title: Careers
 <div class="careers">
   <div class="md">
     <h2>{{ site.data.careers.careersheading | markdownify }}</h2>
+
+    <div class="showcase--wrapper">
+      <img src="/img/employee-1.png" style="object-position: left;" width="600" height="600">
+      <img src="/img/employee-2.png" style="object-position: right;" width="600" height="600">
+      <img src="/img/employee-3.png" width="600" height="600">
+    </div>
+
     {{ site.data.careers.careerscontent | markdownify }}
 
     <center>

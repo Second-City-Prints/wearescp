@@ -94,8 +94,8 @@ body {
     font-family: "Gotham";
 }
 
-a {
-    color: #d42727;
+a{
+    color: #d42727 ;
 }
 
 header {
@@ -990,4 +990,24 @@ div.postbanner, span.postbanner {
     font-size: 0.8em;
     padding-top: 0.25em;
     font-weight: 400;
+}
+
+.showcase--wrapper{
+    display: flex;
+    justify-content: center;
+    max-width: 100%;
+}
+.showcase--wrapper img {
+    max-width: 33%;
+    object-fit: cover;
+    max-height: 30vh;
+}
+
+body .resumator-department-heading, body .resumator-type-heading {
+    font-size: 19px;
+    font-weight: 600;
+}
+
+.md a.resumator-job-link {
+    color: #d42727!important;
 }
