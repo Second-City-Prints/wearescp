@@ -8,9 +8,9 @@ title: Careers
     <h2>{{ site.data.careers.careersheading | markdownify }}</h2>
 
     <div class="showcase--wrapper">
-      <img src="/img/employee-1.png" style="object-position: left;" width="600" height="600">
-      <img src="/img/employee-2.png" style="object-position: right;" width="600" height="600">
-      <img src="/img/employee-3.png" width="600" height="600">
+      <img src="/img/employee-1.jpg" style="object-position: left;" width="600" height="600">
+      <img src="/img/employee-2.jpg" style="object-position: right;" width="600" height="600">
+      <img src="/img/employee-3.jpg" width="600" height="600">
     </div>
 
     {{ site.data.careers.careerscontent | markdownify }}
