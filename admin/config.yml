@@ -9,11 +9,11 @@ site_url: http://wearescp.com
 show_preview_links: false
 
 collections:
-  - name: 'blog'
-    label: 'Blog'
-    folder: '_posts/'
+  - name: "blog"
+    label: "Blog"
+    folder: "_posts/"
     create: true
-    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     editor:
       preview: false
     fields:
@@ -21,55 +21,112 @@ collections:
         label: Featured image
         widget: object
         fields:
-          - {name: src, label: Image, widget: image}
-          - {name: alt, label: Alt text, widget: string}
-          - {name: sizing, label: sizing, widget: select,  options: [ "auto", "cover", "contain"], default: "auto", hint: "This determines how the image is sized. Cover will expand and crop the image to fit as needed, contain will ensure the whole image will fit in the banner space but may lead to black bars on the sides to offset the empty space, and finally auto will just have it be 100% the width of the banner space, with the height just being whatever it takes up when it's scaled to fit the width. You can usually just go with auto."}
-      - { label: 'Layout', name: 'layout', widget: 'hidden', default: 'post' }
-      - { label: 'Title', name: 'title', widget: 'string' }
-      - { label: 'Publish Date', name: 'date', widget: 'datetime' }
-      - { label: 'Body', name: 'body', widget: 'markdown' }      
+          - { name: src, label: Image, widget: image }
+          - { name: alt, label: Alt text, widget: string }
+          - {
+              name: sizing,
+              label: sizing,
+              widget: select,
+              options: ["auto", "cover", "contain"],
+              default: "auto",
+              hint: "This determines how the image is sized. Cover will expand and crop the image to fit as needed, contain will ensure the whole image will fit in the banner space but may lead to black bars on the sides to offset the empty space, and finally auto will just have it be 100% the width of the banner space, with the height just being whatever it takes up when it's scaled to fit the width. You can usually just go with auto.",
+            }
+      - { label: "Layout", name: "layout", widget: "hidden", default: "post" }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Body", name: "body", widget: "markdown" }
 
   - name: "artists"
     label: "Artists"
     folder: "_artists"
     create: true
     slug: "{{name}}"
-    fields: 
-      - {label: "Artist Name", name: "name", widget: "string"}
-      - {label: "Main Image", name: "image", widget: "image", hint: "This is the main image used by the artist. It appears in the scrolling portion at the top, and the gallery."}
-      - {label: "Main Image Alt Text", name: "alt", widget: "string", required: false}
-      - {label: "Order", name: "order", widget: "number", default: 10, value_type: "int", hint: "You can use this number to set the ideal position this artist appears. Lower is closer to the top/left. You don't have to set this if you don't care, it's sorted automatically."}
+    fields:
+      - { label: "Artist Name", name: "name", widget: "string" }
+      - {
+          label: "Main Image",
+          name: "image",
+          widget: "image",
+          hint: "This is the main image used by the artist. It appears in the scrolling portion at the top, and the gallery.",
+        }
+      - {
+          label: "Main Image Alt Text",
+          name: "alt",
+          widget: "string",
+          required: false,
+        }
+      - {
+          label: "Order",
+          name: "order",
+          widget: "number",
+          default: 10,
+          value_type: "int",
+          hint: "You can use this number to set the ideal position this artist appears. Lower is closer to the top/left. You don't have to set this if you don't care, it's sorted automatically.",
+        }
       - label: "Gallery"
         name: "galleryImages"
         widget: "list"
-        summary: '{{fields.image}}'
-        fields: 
-          - {label: "Image", name: "image", widget: "image"}
-          - {label: "URL that image links to", name: "url", widget: "string", required: false}
-          - {label: "Alt Text", name: "alt", widget: "string", required: false}
-  
+        summary: "{{fields.image}}"
+        fields:
+          - { label: "Image", name: "image", widget: "image" }
+          - {
+              label: "URL that image links to",
+              name: "url",
+              widget: "string",
+              required: false,
+            }
+          - {
+              label: "Alt Text",
+              name: "alt",
+              widget: "string",
+              required: false,
+            }
+
   - name: "contact"
     label: "Side Page Content (Contact, Careers)"
     files:
       - label: "Contact Copy"
         name: "contact"
         file: "_data/contact.yml"
-        fields: 
-          - {label: "Business Inquiries", name: "business", widget: "markdown" }
-          - {label: "BI Button Text", name: "businessbutton", widget: "string"}
-          - {label: "BI Button URL", name: "businessbuttonurl", widget: "string"}
-          - {label: "Customer Service", name: "customer", widget: "markdown" }
-          - {label: "CS Button Text", name: "customerbutton", widget: "string"}          
-          - {label: "CS Button URL", name: "customerbuttonurl", widget: "string"}          
+        fields:
+          - {
+              label: "Business Inquiries",
+              name: "business",
+              widget: "markdown",
+            }
+          - {
+              label: "BI Button Text",
+              name: "businessbutton",
+              widget: "string",
+            }
+          - {
+              label: "BI Button URL",
+              name: "businessbuttonurl",
+              widget: "string",
+            }
+          - { label: "Customer Service", name: "customer", widget: "markdown" }
+          - {
+              label: "CS Button Text",
+              name: "customerbutton",
+              widget: "string",
+            }
+          - {
+              label: "CS Button URL",
+              name: "customerbuttonurl",
+              widget: "string",
+            }
 
       - label: "Careers Copy"
         name: "careers"
         file: "_data/careers.yml"
-        fields: 
-          - {label: "Careers Copy", name: "careers", widget: "markdown" }
-          - {label: "Office Jobs Button Text", name: "officebutton", widget: "string"}
-          - {label: "Office Jobs Button Subtext", name: "officebuttonsub", widget: "string"}
-          - {label: "Office Jobs Button URL", name: "officebuttonurl", widget: "string", hint: "This URL will also be used by the dropdown for office jobs in the nav."}
-          - {label: "Warehouse Jobs Button Text", name: "warehousebutton", widget: "string"}          
-          - {label: "Warehouse Jobs Button Subtext", name: "warehousebuttonsub", widget: "string"}          
-          - {label: "Warehouse Jobs Button URL", name: "warehousebuttonurl", widget: "string", hint: "This URL will also be used by the dropdown for warehouse jobs in the nav."}           
+        fields:
+          - {
+              label: "Careers Heading",
+              name: "careersheading",
+              widget: "string",
+            }
+          - {
+              label: "Careers Content",
+              name: "careerscontent",
+              widget: "markdown",
+            }
