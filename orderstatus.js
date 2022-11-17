@@ -86,7 +86,7 @@ function SCP__getShipmentDisplayString(data) {
                 switch(field) { //if the order is unshipped, we add an extra message - if not, we just close it
                     case 'unshipped':
                         state = state.replace('UNSHIPPED', 'AWAITING SHIPMENT')
-                        state += `<em>Your order is either still on pre-order, or pending shipment in our shipping queue. All in-stock orders take 3-5 business days to process before shipment. Pre-order ship times vary by product — please refer to the product page for the expected ship date.<br><br>You will receive a shipping confirmation email with your tracking information as soon as your order has been picked up from our warehouse, and it will be viewable here as well.</em></div>`
+                        state += `<em>Your order is either still on pre-order, or pending shipment in our shipping queue. All in-stock orders take 10-14 business days to process before shipment. Pre-order ship times vary by product — please refer to the product page for the expected ship date.<br><br>You will receive a shipping confirmation email with your tracking information as soon as your order has been picked up from our warehouse, and it will be viewable here as well.</em></div>`
                     break
 
                     case 'splitship':
