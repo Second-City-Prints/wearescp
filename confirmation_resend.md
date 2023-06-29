@@ -78,6 +78,7 @@ permalink: /resend
         const baseURL = 'https://lr_resend.ksws.workers.dev/';
         const queryParams = `?email=${encodeURIComponent(email)}&date=${encodeURIComponent(date)}`;
         const requestURL = baseURL + queryParams;
+        form.classList.add('fetching')
 
         fetch(requestURL)
         .then(response => response.json())
@@ -87,9 +88,11 @@ permalink: /resend
             } else {
                 message.innerHTML = data.error;
             }
+            form.classList.remove('fetching')
         })
         .catch(error => {
             message.textContent = 'An error occurred while processing your request.';
+            form.classList.remove('fetching')
         });
     }
 </script>
