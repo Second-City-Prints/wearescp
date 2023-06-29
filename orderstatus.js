@@ -1,7 +1,7 @@
 function SCP__createForm(container, options = {
         faqURL: 'https://secondcityprints.zendesk.com/hc/en-us',
         contactURL: 'https://secondcityprints.zendesk.com/hc/en-us/requests/new',
-        notice: '<em>With Covid-19, postal carriers are experiencing global delays due to increased volume and staffing limitations. Thank you for your patience.</em>'
+        notice: ''
     }) {
     let containerEl = document.querySelector(container)
 
