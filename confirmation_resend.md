@@ -86,7 +86,15 @@ permalink: /resend
             if (data.success) {
                 message.innerHTML = 'Request receieved! If your information is correct, you will receive another order confirmation email shortly.';
             } else {
-                message.innerHTML = data.error;
+                console.log(data.error, data.error == "slow down")
+                switch(data.error) {
+                    case "slow down":
+                        message.innerHTML = "You've submitted a request within the last minute already. Please wait a minute!"
+                    break
+
+                    default:
+                        message.innerHTML = data.error
+                }
             }
             form.classList.remove('fetching')
         })
