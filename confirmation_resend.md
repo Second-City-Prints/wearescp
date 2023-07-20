@@ -1,6 +1,6 @@
 ---
 layout: inner
-title: Resend Confirmation Tool
+title: Resend Order Confirmation Tool
 permalink: /resend
 ---
 
@@ -8,6 +8,15 @@ permalink: /resend
     {% assign cacheBust = site.time | date:'?v=%s' %}
     <link type="text/css" rel="stylesheet" href="{{ "/orderstatus.css" | relative_url | append: cacheBust }}">
     <!---->
+    <div id="guide">
+        <div id="orderdirections">
+            <p>Placed an order and didn't receive your confirmation email? Enter the following information to have your confirmation sent again:</p>
+            <ol>
+                <li>Your email address used for checkout</li>
+                <li>The date you placed your order</li>
+            </ol>
+        </div>
+    </div>
     <form class="orderlookup" id="orderform">
         <label for="email">Email:</label>
         <input type="email" id="email" required>
@@ -20,19 +29,12 @@ permalink: /resend
         <button type="submit" class="button">Resend</button>
     </form>
     <div id="guide">
-        <div id="orderdirections">
-            <p>In order to have another confirmation email sent, please enter...</p>
-            <ol>
-                <li>Your email address used for checkout</li>
-                <li>The date you placed your order</li>
-            </ol>
-        </div>
         <div class="ordersupport">
-            <em>If you do not know either the date or email associated with your order, please reach out!</em>
+            <em>If you do not receive your order confirmation in the next hour, please contact our support team using the link below.</em>
             <span>
-                <a class="button" href="https://secondcityprints.zendesk.com/hc/en-us" target="_blank">FAQ</a>
-                <a class="button" href="https://secondcityprints.zendesk.com/hc/en-us/requests/new" target="_blank">Contact Us</a>
+                <a class="button" href="https://wearescp.zendesk.com/hc/en-us/requests/new?ticket_form_id=13405345210516" target="_blank">Contact Us</a>
             </span>
+            <em>For any other questions, please refer to our <a href="https://secondcityprints.zendesk.com/hc/en-us" target="_blank">FAQ</a>.</em>
         </div>
     </div>
 </div>
@@ -47,6 +49,14 @@ permalink: /resend
 
 #message:empty {
     display: none;
+}
+
+#orderdirections {
+    padding: 0 0 2em;
+}
+
+#guide ol {
+    padding-top: 1em;
 }
 </style>
 
@@ -84,7 +94,7 @@ permalink: /resend
         .then(response => response.json())
         .then(data => {
             if (data.success) {
-                message.innerHTML = 'Request receieved! If your information is correct, you will receive another order confirmation email shortly.';
+                message.innerHTML = 'Request received! Our system will re-send your order confirmation email shortly, so long as the info you provided matches an order in our system.<br><br>Please make sure to check your spam and promotions folders as well.';
             } else {
                 console.log(data.error, data.error == "slow down")
                 switch(data.error) {
