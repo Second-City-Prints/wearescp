@@ -10,7 +10,7 @@ permalink: /resend
     <!---->
     <div id="guide">
         <div id="orderdirections">
-            <p>Placed an order and didn't receive your confirmation email? Enter the following information to have your confirmation sent again:</p>
+            <p>Placed an order and didn't receive your confirmation email? Enter the following information to have it sent again:</p>
             <ol>
                 <li>Your email address used for checkout</li>
                 <li>The date you placed your order</li>
