@@ -123,6 +123,13 @@ input[type="text"], input[type="date"], input[type="email"] {
     margin: 10px 0;
 }  
 
+.outputblock .orderdate {
+    font-style: italic;
+    color: #da2926;
+    font-size: 1rem;
+    margin-top: -0.5em;
+}
+
 #guide {
     font-size: 0.9em;
     line-height: 1.5em;

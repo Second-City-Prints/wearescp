@@ -56,7 +56,7 @@ function SCP__getOrder(event) {
     //if the output doesn't have an error, continue with the fetch
     if(output.innerHTML == "") {
         form.classList.add('fetching') //locks out user from hitting anything in the form while active
-        fetch(`https://scporderlookup.ksws.workers.dev/?email=${encodeURIComponent(data.get('email').trim())}&order=${encodeURIComponent(data.get('order').trim())}`).then(res=>res.json().then(data=>{ //gets the JSON from the worker
+        fetch(`https://fulfilpreorderupdate.scporderlookup.ksws.workers.dev/?email=${encodeURIComponent(data.get('email').trim())}&order=${encodeURIComponent(data.get('order').trim())}`).then(res=>res.json().then(data=>{ //gets the JSON from the worker
             output.insertAdjacentHTML('beforeend', `<div class='outputblock'>${SCP__getShipmentDisplayString(data)}</div>`)
 
             //remove directions if successful
@@ -82,7 +82,14 @@ function SCP__getShipmentDisplayString(data) {
             break
 
             case 'state': 
-                state = `<div class="orderstate"><span>Status: ${field.toUpperCase()}</span>`
+                let shipDate
+                if(data.date) {
+                    //formats like "Oct. 09, 2023"
+                    dateSplit = new Date(data.date).toDateString().split(" ").splice(1, 3)
+                    shipDate = `<span class="orderdate">Estimated to ship the week of ${dateSplit[0]}. ${dateSplit[1]}, ${dateSplit[2]}</span>`
+                }
+
+                state = `<div class="orderstate"><span>Status: ${field.toUpperCase()}</span> ${shipDate ? shipDate : ''}`
                 switch(field) { //if the order is unshipped, we add an extra message - if not, we just close it
                     case 'unshipped':
                         state = state.replace('UNSHIPPED', 'AWAITING SHIPMENT')
