@@ -85,15 +85,31 @@ function SCP__getShipmentDisplayString(data) {
                 let shipDate
                 if(data.date) {
                     //formats like "Oct. 09, 2023"
-                    dateSplit = new Date(data.date).toDateString().split(" ").splice(1, 3)
+                    let date = new Date(data.date)
+                    dateSplit = date.toDateString().split(" ").splice(1, 3)
                     shipDate = `<span class="orderdate">Estimated to ship the week of ${dateSplit[0]}. ${dateSplit[1]}, ${dateSplit[2]}</span>`
+
+                    //determine if preorder
+                    let currentDate = new Date();
+                    let dateDifference = ((date.getTime() - currentDate.getTime()) / (1000 * 3600 * 24)) 
+                    console.log(dateDifference)
+                    
+                    if(dateDifference > 2) {
+                        field = "pre-order"
+                    } else if(dateDifference < 0) {
+                        shipDate = `<span class="orderdate">Shipping as soon as available</span>`
+                    }
                 }
 
                 state = `<div class="orderstate"><span>Status: ${field.toUpperCase()}</span> ${shipDate ? shipDate : ''}`
                 switch(field) { //if the order is unshipped, we add an extra message - if not, we just close it
+                    case 'pre-order':
+                        state += `<em>Your order is still on pre-order. Please refer to the expected ship date above.<br><br>You will receive a shipping confirmation email with your tracking information as soon as your order has shipped. You will also be able to view tracking information on this page once that happens.</em></div>`
+                    break
+
                     case 'unshipped':
                         state = state.replace('UNSHIPPED', 'AWAITING SHIPMENT')
-                        state += `<em>Your order is either still on pre-order, or pending shipment in our shipping queue. All in-stock orders take 10-14 business days to process before shipment. Pre-order ship times vary by product — please refer to the product page for the expected ship date.<br><br>You will receive a shipping confirmation email with your tracking information as soon as your order has been picked up from our warehouse, and it will be viewable here as well.</em></div>`
+                        state += `<em>Your order is either still on pre-order, or pending shipment within our shipping queue. All fully in-stock orders are estimated to take 3-5 business days to process before shipment. Pre-order processing times vary by product — please refer to the product page for the expected ship date.<br><br>You will receive a shipping confirmation email with your tracking information as soon as your order has shipped. You will also be able to view tracking information on this page once that happens.</em></div>`
                     break
 
                     case 'splitship':
