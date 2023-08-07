@@ -56,7 +56,7 @@ function SCP__getOrder(event) {
     //if the output doesn't have an error, continue with the fetch
     if(output.innerHTML == "") {
         form.classList.add('fetching') //locks out user from hitting anything in the form while active
-        fetch(`https://fulfilpreorderupdate.scporderlookup.ksws.workers.dev/?email=${encodeURIComponent(data.get('email').trim())}&order=${encodeURIComponent(data.get('order').trim())}`).then(res=>res.json().then(data=>{ //gets the JSON from the worker
+        fetch(`https://scporderlookup.ksws.workers.dev/?email=${encodeURIComponent(data.get('email').trim())}&order=${encodeURIComponent(data.get('order').trim())}`).then(res=>res.json().then(data=>{ //gets the JSON from the worker
             output.insertAdjacentHTML('beforeend', `<div class='outputblock'>${SCP__getShipmentDisplayString(data)}</div>`)
 
             //remove directions if successful
