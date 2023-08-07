@@ -97,7 +97,7 @@ function SCP__getShipmentDisplayString(data) {
                     if(dateDifference > 2) {
                         field = "pre-order"
                     } else if(dateDifference < 0) {
-                        shipDate = `<span class="orderdate">Shipping as soon as available</span>`
+                        shipDate = ""
                     }
                 }
 
@@ -108,7 +108,7 @@ function SCP__getShipmentDisplayString(data) {
                     break
 
                     case 'unshipped':
-                        state = state.replace('UNSHIPPED', 'AWAITING SHIPMENT')
+                        state = state.replace('UNSHIPPED', 'PREPARING FOR SHIPMENT')
                         state += `<em>Your order is either still on pre-order, or pending shipment within our shipping queue. All fully in-stock orders are estimated to take 3-5 business days to process before shipment. Pre-order processing times vary by product — please refer to the product page for the expected ship date.<br><br>You will receive a shipping confirmation email with your tracking information as soon as your order has shipped. You will also be able to view tracking information on this page once that happens.</em></div>`
                     break
 
