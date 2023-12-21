@@ -111,7 +111,7 @@ header {
     z-index: 5;
 }
 
-header .logoimg {
+header .logoimg, .logoimg {
     color: transparent !important;
     max-width: 50vw;
     width: 300px;
